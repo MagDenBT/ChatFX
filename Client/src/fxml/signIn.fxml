@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.SignInController">
+   <children>
+      <VBox layoutX="108.0" layoutY="32.0" prefHeight="276.0" prefWidth="162.0">
+         <children>
+            <TextField fx:id="tfLogin" layoutX="108.0" layoutY="32.0">
+               <VBox.margin>
+                  <Insets bottom="40.0" />
+               </VBox.margin>
+            </TextField>
+            <TextField fx:id="tfPassword" layoutX="108.0" layoutY="74.0">
+               <VBox.margin>
+                  <Insets bottom="40.0" />
+               </VBox.margin>
+            </TextField>
+            <TextField fx:id="tfFirstName" layoutX="108.0" layoutY="114.0">
+               <VBox.margin>
+                  <Insets bottom="40.0" />
+               </VBox.margin>
+            </TextField>
+            <TextField fx:id="tfLastName" layoutX="108.0" layoutY="171.0">
+               <VBox.margin>
+                  <Insets bottom="40.0" />
+               </VBox.margin>
+            </TextField>
+         </children>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </VBox>
+      <VBox layoutX="405.0" layoutY="32.0">
+         <children>
+            <TextField fx:id="tfAge" layoutX="348.0" layoutY="32.0">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <VBox.margin>
+                  <Insets bottom="40.0" />
+               </VBox.margin>
+            </TextField>
+            <TextField fx:id="tfSex" layoutX="349.0" layoutY="85.0">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <VBox.margin>
+                  <Insets bottom="40.0" />
+               </VBox.margin>
+            </TextField>
+            <TextField layoutX="349.0" layoutY="129.0">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <VBox.margin>
+                  <Insets bottom="40.0" />
+               </VBox.margin>
+            </TextField>
+         </children>
+      </VBox>
+      <VBox layoutX="14.0" layoutY="32.0">
+         <children>
+            <Label layoutX="14.0" layoutY="32.0" prefHeight="29.0" prefWidth="91.0" text="Логин">
+               <VBox.margin>
+                  <Insets bottom="40.0" />
+               </VBox.margin>
+            </Label>
+            <Label layoutX="14.0" layoutY="108.0" prefHeight="29.0" prefWidth="91.0" text="Пароль">
+               <VBox.margin>
+                  <Insets bottom="40.0" />
+               </VBox.margin>
+            </Label>
+            <Label layoutX="14.0" layoutY="170.0" prefHeight="29.0" prefWidth="91.0" text="Имя">
+               <VBox.margin>
+                  <Insets bottom="40.0" />
+               </VBox.margin>
+            </Label>
+            <Label layoutX="24.0" layoutY="245.0" prefHeight="29.0" prefWidth="91.0" text="Фамилия">
+               <VBox.margin>
+                  <Insets bottom="40.0" />
+               </VBox.margin>
+            </Label>
+         </children>
+      </VBox>
+      <VBox layoutX="289.0" layoutY="32.0">
+         <children>
+            <Label layoutX="300.0" layoutY="32.0" prefHeight="29.0" prefWidth="91.0" text="Возраст">
+               <VBox.margin>
+                  <Insets bottom="40.0" />
+               </VBox.margin>
+            </Label>
+            <Label layoutX="289.0" layoutY="72.0" prefHeight="29.0" prefWidth="91.0" text="Пол">
+               <VBox.margin>
+                  <Insets bottom="40.0" />
+               </VBox.margin>
+            </Label>
+            <Label layoutX="289.0" layoutY="122.0" prefHeight="29.0" prefWidth="91.0" text="Фото">
+               <VBox.margin>
+                  <Insets bottom="40.0" />
+               </VBox.margin>
+            </Label>
+         </children>
+      </VBox>
+      <ImageView fx:id="iSave" fitHeight="36.0" fitWidth="33.0" layoutX="524.0" layoutY="330.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Assets/save.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>
