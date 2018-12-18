@@ -1,8 +1,5 @@
-package UserList;
+package New.UserList;
 
-import javafx.beans.property.SimpleIntegerProperty;
-import javafx.beans.property.SimpleObjectProperty;
-import javafx.beans.property.SimpleStringProperty;
 import javafx.scene.image.Image;
 
 public class User {
@@ -48,6 +45,16 @@ public class User {
         this.login = login;
         this.password = password;
         this.firstName = firstName;
+        this.lastName = null;
+        this.age = 0;
+        this.sex = null;
+        this.photo = null;
+
+    }
+    public User(String login, String password) {
+        this.login = login;
+        this.password = password;
+        this.firstName = null;
         this.lastName = null;
         this.age = 0;
         this.sex = null;

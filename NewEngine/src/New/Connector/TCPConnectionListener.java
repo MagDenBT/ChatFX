@@ -1,4 +1,4 @@
-package Connector;
+package New.Connector;
 
 public interface TCPConnectionListener {
 
@@ -7,6 +7,8 @@ public interface TCPConnectionListener {
     void onDisconnection(TCPConnection tcpConnection);
 
     void onRecieveMessage(TCPConnection tcpConnection, Message msg);
+
+    boolean onAuthorization(TCPConnection tcpConnection, Message msg);
 
     void connectionException(Exception e);
 

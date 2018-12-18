@@ -1,4 +1,4 @@
-package Connector;
+package New.Connector;
 
 
 import java.io.IOException;
@@ -10,6 +10,7 @@ class StreamReader {
     private final TCPConnection tcpConnection;
     private Thread thread;
     private final TCPConnectionListener listener;
+
 
     protected StreamReader(ObjectInputStream in, TCPConnection tcpConnection, TCPConnectionListener listener) {
         this.tcpConnection = tcpConnection;
@@ -25,9 +26,20 @@ class StreamReader {
                 } catch (IOException e) {
                       listener.recieveMessageException(tcpConnection, e);
                       tcpConnection.closeConnection();
+                      break; //на всякий случай
                 }finally {
                     if (msg != null) {
-                        listener.onRecieveMessage(tcpConnection, msg);
+                        switch (msg.getType()) {
+                            case isTextMsg:
+                                listener.onRecieveMessage(tcpConnection, msg);
+                                break;
+                            case isAuth:
+                                tcpConnection.isAuthorizated = listener.onAuthorization(tcpConnection, msg);
+
+                        }
+                    }else {
+                        tcpConnection.closeConnection();
+                        break; //на всякий случай
                     }
                 }
                 }

@@ -1,8 +1,6 @@
 package sample;
 
-import UserList.User;
-import javafx.beans.property.SimpleIntegerProperty;
-import javafx.beans.property.SimpleObjectProperty;
+import New.UserList.User;
 import javafx.beans.property.SimpleStringProperty;
 
 public class WrapperUser {

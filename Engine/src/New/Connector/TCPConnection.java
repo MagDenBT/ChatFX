@@ -1,4 +1,4 @@
-package Connector;
+package New.Connector;
 
 import java.io.*;
 import java.net.Socket;
@@ -8,8 +8,8 @@ public class TCPConnection {
 
     private Socket socket;
     private final TCPConnectionListener listener;
-    private ObjectInputStream in ;
-    private ObjectOutputStream out;
+    private BufferedReader in ;
+    private BufferedWriter out;
     private StreamReader streamReader;
     private Thread rxThread;
 
@@ -33,9 +33,8 @@ public class TCPConnection {
 
     private void initialization() {
         try {
-
-            in = new ObjectInputStream (socket.getInputStream());
-            out = new ObjectOutputStream(socket.getOutputStream());
+            in = new BufferedReader(new InputStreamReader(socket.getInputStream(), Charset.forName("UTF-8")));
+            out = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream(), Charset.forName("UTF-8")));
             listener.onConnection(this);
         } catch (IOException e) {
             listener.connectionException(this, e);
@@ -50,7 +49,6 @@ public class TCPConnection {
 
     protected synchronized void closeConnection() {
         try {
-            String antl;
             streamReader.stop();
             in.close();
             out.close();
@@ -60,10 +58,10 @@ public class TCPConnection {
         }
     }
 
-    public boolean sendMessage(Message msg) {
+    public boolean sendMessage(String msg) {
 
         try {
-            out.writeObject(msg);
+            out.write(msg + "\n");
             out.flush();
             return true;
         } catch (IOException e) {

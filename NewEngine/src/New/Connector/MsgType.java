@@ -1,4 +1,4 @@
-package Connector;
+package New.Connector;
 
 public enum MsgType {
 

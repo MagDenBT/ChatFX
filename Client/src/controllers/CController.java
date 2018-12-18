@@ -1,31 +1,28 @@
 package controllers;
 
 
-import Connector.TCPConnection;
-import Connector.TCPConnectionListener;
+import New.Connector.Message;
+import New.Connector.TCPConnection;
+import New.Connector.TCPConnectionListener;
 import javafx.application.Platform;
-import javafx.event.ActionEvent;
-import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import sample.WrapperUser;
+import sample.*;
 import javafx.scene.image.ImageView;
-import sample.UsersManager;
 
 
 import java.io.IOException;
 
 
-public class CController implements TCPConnectionListener {
+public class CController implements WorkerListener {
 
     @FXML
     private ImageView iSettings;
@@ -36,8 +33,6 @@ public class CController implements TCPConnectionListener {
     @FXML
     private TextField tfNickname;
     @FXML
-    private Label lErrorMsg;
-    @FXML
     private TextArea taLog;
     @FXML
     private TextField tfInput;
@@ -45,10 +40,10 @@ public class CController implements TCPConnectionListener {
     private Label lConnectionStatus;
 
     private EventHandler<MouseEvent> me;
-    private boolean tcpIsRun = false;
-    private TCPConnection tcpConnection;
     private final String HOST = "127.0.0.1";
     private final int PORT = 8189;
+//    private final Thread workerThread;
+    private Worker worker;
 
     @FXML
     public void initialize() {
@@ -68,21 +63,18 @@ public class CController implements TCPConnectionListener {
 
         };
         iSettings.addEventHandler(MouseEvent.MOUSE_CLICKED, me);
+
+       new Thread(() -> {
+            worker = new Worker(CController.this, HOST, PORT, "testLogin", "testPassword");
+        }).start();
+
     }
 
     public void sendMsg() {
-        String nick = tfNickname.getText();
         String msg = tfInput.getText();
-        if (!msg.equals("")) {
-            if (!nick.equals("")) {
-                String completeMsg = nick + ": " + msg;
-                tcpConnection.sendMessage(completeMsg);
-                tfInput.clear();
-            } else {
-                tfNickname.requestFocus();
-                tfNickname.setPromptText("Нужно ввести никнейм");
-            }
-        }
+        if (!msg.equals(""))
+                if(worker.sendTextMsg(null,msg))
+                     tfInput.clear();
     }
 
     public void initializeUserList() {
@@ -91,51 +83,47 @@ public class CController implements TCPConnectionListener {
     }
 
     private void writeTaLog(String msg) {
-        taLog.appendText(msg + "\n");
+        Platform.runLater(()-> taLog.appendText(msg + "\n"));
+
     }
 
     private void lConnectionStatusChanger(String value) {
         Platform.runLater(() -> lConnectionStatus.setText(value));
     }
 
-    private void lErrorMsgChanger(String value) {
-        Platform.runLater(() -> lErrorMsg.setText(value));
+
+
+    @Override
+    public void gotTextMsg(String msg) {
+        writeTaLog(msg);
     }
 
-    public void startConnection() {
-        new Thread(() -> tcpConnection = new TCPConnection(HOST, PORT, this)).start();
+
+    @Override
+    public void connectionException(Exception e) {
+        lConnectionStatusChanger("Сервер недоступен");
     }
 
     @Override
-    public void onConnection(TCPConnection tcpConnection) {
-        tcpIsRun = true;
-        lConnectionStatusChanger("Онлайн");
+    public void recieveMessageException(Exception e) {
+
     }
 
     @Override
-    public void onDisconnection(TCPConnection tcpConnection) {
-        tcpIsRun = false;
+    public void onConnection() {
+        lConnectionStatusChanger("Не авторизован");
+    }
+
+    @Override
+    public void onDisconnection() {
         lConnectionStatusChanger("Оффлайн");
     }
 
     @Override
-    public void onRecieveTextMessage(TCPConnection tcpConnection, String msg) {
-        writeTaLog(msg);
+    public void signIn(boolean answer) {
+        lConnectionStatusChanger("В сети");
     }
 
-    @Override
-    public void connectionException(Exception e) {
-        lConnectionStatusChanger("Не удалось установить соединение");
-    }
 
-    @Override
-    public void connectionException(TCPConnection tcpConnection, Exception e) {
-        lConnectionStatusChanger("Не удалось установить соединение");
-    }
-
-    @Override
-    public void recieveMessageException(TCPConnection tcpConnection, Exception e) {
-        lErrorMsgChanger("Ошибка передачи сообщения " + e.getMessage());
-    }
 
 }

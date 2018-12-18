@@ -1,7 +1,7 @@
 package controllers;
 
-import Connector.TCPConnection;
-import Connector.TCPConnectionListener;
+import New.Connector.TCPConnection;
+import New.Connector.TCPConnectionListener;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;

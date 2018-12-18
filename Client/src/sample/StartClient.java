@@ -14,12 +14,15 @@ public class StartClient  extends Application {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("../fxml/client.fxml"));
         loader.load();
         Parent root = loader.getRoot();
-        primaryStage.setScene(new Scene(root));
+        Scene scene = new Scene(root);
+        primaryStage.setScene(scene);
+        primaryStage.setTitle("Балона ВЗОРВАЛАСЬ");
         primaryStage.show();
         CController controller = loader.getController();
-        controller.startConnection();
+
+
       //  UsersManager.addUser(new WrapperUser("magden","Muhammad", "Bilto"));
-        controller.initializeUserList();
+       // controller.initializeUserList();
     }
 
 

@@ -1,26 +1,29 @@
-package Connector;
+package New.Connector;
 
 import java.io.*;
 import java.net.Socket;
-import java.nio.charset.Charset;
 
 public class TCPConnection {
 
     private Socket socket;
     private final TCPConnectionListener listener;
-    private BufferedReader in ;
-    private BufferedWriter out;
+    private ObjectInputStream in ;
+    private ObjectOutputStream out;
     private StreamReader streamReader;
-    private Thread rxThread;
+    protected volatile boolean isAuthorizated = false;
+    private volatile long timeOfStartConnection;
+    protected volatile int countOfTryAuthor;
 
     public TCPConnection(String IP, int port, TCPConnectionListener listener) {
         this.listener = listener;
         try {
             this.socket = new Socket(IP, port);
+            timeOfStartConnection = System.currentTimeMillis();
+            initialization();
         } catch (IOException e) {
             listener.connectionException(this,e);
         }
-        initialization();
+
 
     }
 
@@ -33,8 +36,8 @@ public class TCPConnection {
 
     private void initialization() {
         try {
-            in = new BufferedReader(new InputStreamReader(socket.getInputStream(), Charset.forName("UTF-8")));
-            out = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream(), Charset.forName("UTF-8")));
+            in = new ObjectInputStream (socket.getInputStream());
+            out = new ObjectOutputStream(socket.getOutputStream());
             listener.onConnection(this);
         } catch (IOException e) {
             listener.connectionException(this, e);
@@ -47,21 +50,23 @@ public class TCPConnection {
 
 
 
-    protected synchronized void closeConnection() {
+    public synchronized void closeConnection() {
         try {
+            String test;
             streamReader.stop();
             in.close();
             out.close();
             socket.close();
+            listener.onDisconnection(this);
         } catch (IOException e) {
             listener.connectionException(this, e);
         }
     }
 
-    public boolean sendMessage(String msg) {
+    public boolean sendMessage(Message msg) {
 
         try {
-            out.write(msg + "\n");
+            out.writeObject(msg);
             out.flush();
             return true;
         } catch (IOException e) {
@@ -71,6 +76,22 @@ public class TCPConnection {
 
     }
 
+    public Socket getSocket() {
+        return socket;
+    }
+
+    public long getTimeOfStartConnection() {
+        return timeOfStartConnection;
+    }
+
+
+    public int getCountOfTryAuthor() {
+        return countOfTryAuthor;
+    }
+
+    public void setCountOfTryAuthor(int countOfTryAuthor) {
+        this.countOfTryAuthor = countOfTryAuthor;
+    }
 
     @Override
     public String toString() {
