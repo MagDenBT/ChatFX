@@ -5,7 +5,6 @@ import New.Connector.TCPConnectionListener;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
-import sample.ConnectionListManager;
 
 import java.io.IOException;
 import java.net.ServerSocket;

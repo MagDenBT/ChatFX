@@ -13,6 +13,7 @@ public class TCPConnection {
     protected volatile boolean isAuthorizated = false;
     private volatile long timeOfStartConnection;
     protected volatile int countOfTryAuthor;
+    private volatile String login;
 
     public TCPConnection(String IP, int port, TCPConnectionListener listener) {
         this.listener = listener;
@@ -89,8 +90,20 @@ public class TCPConnection {
         return countOfTryAuthor;
     }
 
+    public synchronized boolean isAuthorizated() {
+        return isAuthorizated;
+    }
+
     public void setCountOfTryAuthor(int countOfTryAuthor) {
         this.countOfTryAuthor = countOfTryAuthor;
+    }
+
+    public synchronized String getLogin() {
+        return login;
+    }
+
+    public synchronized void setLogin(String login) {
+        this.login = login;
     }
 
     @Override

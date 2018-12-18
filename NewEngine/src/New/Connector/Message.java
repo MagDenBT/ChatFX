@@ -40,6 +40,10 @@ public class Message {
         this.signIn = signIn;
     }
 
+    public void setUser(User user) {
+        this.user = user;
+    }
+
     public String getSignUp() {
         return signUp;
     }

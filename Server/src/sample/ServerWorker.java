@@ -3,28 +3,33 @@ package sample;
 import New.Connector.Message;
 import New.Connector.TCPConnection;
 import New.Connector.TCPConnectionListener;
+import New.UserList.User;
 
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
+import java.util.Map;
 
 public class ServerWorker implements TCPConnectionListener {
 
     private int port;
     private ServerSocket serverSocket;
-    private HashMap<String,TCPConnection> authorizedConnections,
-    private volatile ArrayList<TCPConnection>  unAuthorizedConnections
+    private HashMap<String, TCPConnection> authorizedConnections;
+    private volatile ArrayList<TCPConnection> unAuthorizedConnections;
     private ServerWorkerListener serverWorkerListener;
     private volatile boolean isRun;
-    private final long maxTimeUnAuthorized;
+    private final ConnectionsInspector connectionInspector;
 
-    public ServerWorker(int port, long maxTimeUnAuthorized, ServerWorkerListener serverWorkerListener) {
+
+
+    public ServerWorker(int port, long maxTimeUnAuthorized, long conInspectionTime, int maxCountFailedAuthor, ServerWorkerListener serverWorkerListener) {
         unAuthorizedConnections = new ArrayList();
         authorizedConnections = new HashMap();
         this.port = port;
-        this.maxTimeUnAuthorized = maxTimeUnAuthorized;
         this.serverWorkerListener = serverWorkerListener;
+        connectionInspector = new ConnectionsInspector(this, maxCountFailedAuthor, conInspectionTime, maxTimeUnAuthorized );
         isRun = true;
         Thread rxThread = new Thread(() -> {
             while (true) {
@@ -44,9 +49,7 @@ public class ServerWorker implements TCPConnectionListener {
             isRun = false;
             serverWorkerListener.serverSocketCreateException(e);
         }
-
         rxThread.start();
-
     }
 
     public synchronized ArrayList<TCPConnection> getUnAuthorizedConnections() {
@@ -60,12 +63,21 @@ public class ServerWorker implements TCPConnectionListener {
 
     @Override
     public synchronized void onDisconnection(TCPConnection tcpConnection) {
+        if (authorizedConnections.containsValue(tcpConnection)){
+            Collection<TCPConnection>  col =authorizedConnections.values();
+            col.remove(tcpConnection);
+        }
+        else getUnAuthorizedConnections().remove(tcpConnection);
 
     }
 
     @Override
     public synchronized void onRecieveMessage(TCPConnection tcpConnection, Message msg) {
-
+        msg.setUser(new User(tcpConnection.getLogin()));
+        for (Map.Entry<String, TCPConnection> con :authorizedConnections.entrySet()) {
+            if(!con.equals(tcpConnection))
+                con.getValue().sendMessage(msg);
+        }
     }
 
     @Override
@@ -79,11 +91,14 @@ public class ServerWorker implements TCPConnectionListener {
         if(login.equals(loginInBase) && password.equals(passwordInBase)){
             getUnAuthorizedConnections().remove(tcpConnection);
             authorizedConnections.put(loginInBase, tcpConnection);
+            tcpConnection.setLogin(loginInBase);
             tcpConnection.setCountOfTryAuthor(0);
             return true;
-        }else{
-            long timeUnAuthorized = System.currentTimeMillis() - tcpConnection.getTimeOfStartConnection();
-            if(timeUnAuthorized < )
+        }else {
+            int countFailedAuthor = tcpConnection.getCountOfTryAuthor();
+            tcpConnection.setCountOfTryAuthor(++countFailedAuthor);
+            connectionInspector.conncetionDestructor(tcpConnection, countFailedAuthor);
+            return false;
         }
     }
 

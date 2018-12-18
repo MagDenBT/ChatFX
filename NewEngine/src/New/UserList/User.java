@@ -61,6 +61,16 @@ public class User {
         this.photo = null;
     }
 
+    public User(String login) {
+        this.login = login;
+        this.password = null;
+        this.firstName = null;
+        this.lastName = null;
+        this.age = 0;
+        this.sex = null;
+        this.photo = null;
+    }
+
     public String getLogin() {
         return login;
     }

@@ -2,7 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b0802967-54f9-48e4-ab17-6e6135e158ec" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/Server/src/sample/csssdsd.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Server/src/sample/ServerWorkerListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NewEngine/src/New/Connector/Message.java" beforeDir="false" afterPath="$PROJECT_DIR$/NewEngine/src/New/Connector/Message.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NewEngine/src/New/Connector/TCPConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/NewEngine/src/New/Connector/TCPConnection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NewEngine/src/New/UserList/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/NewEngine/src/New/UserList/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/controllers/SController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/controllers/SController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/sample/ConnectionCloser.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/sample/ConnectionsInspector.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/sample/ConnectionListManager.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/sample/ServerWorker.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/sample/ServerWorker.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/sample/csssdsd.java" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -14,29 +23,88 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="SController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Server/src/controllers/SController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="110">
+              <caret line="11" column="57" selection-start-line="11" selection-start-column="36" selection-end-line="11" selection-end-column="57" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="TCPConnection.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/NewEngine/src/New/Connector/TCPConnection.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="284">
-              <caret line="93" column="5" selection-start-line="93" selection-start-column="5" selection-end-line="93" selection-end-column="5" />
+            <state relative-caret-position="325">
+              <caret line="93" column="30" lean-forward="true" selection-start-line="93" selection-start-column="30" selection-end-line="93" selection-end-column="30" />
+              <folding>
+                <element signature="e#2290#2291#0" expanded="true" />
+                <element signature="e#2327#2328#0" expanded="true" />
+                <element signature="e#2402#2403#0" expanded="true" />
+                <element signature="e#2430#2431#0" expanded="true" />
+                <element signature="e#2472#2473#0" expanded="true" />
+                <element signature="e#2506#2507#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ConnectionListManager.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Server/src/sample/ConnectionListManager.java">
+      <file leaf-file-name="ServerWorker.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Server/src/sample/ServerWorker.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="243">
-              <caret line="23" column="28" selection-start-line="23" selection-start-column="28" selection-end-line="23" selection-end-column="28" />
+            <state relative-caret-position="396">
+              <caret line="65" column="56" lean-forward="true" selection-start-line="65" selection-start-column="56" selection-end-line="65" selection-end-column="56" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="csssdsd.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Server/src/sample/csssdsd.java">
+      <file leaf-file-name="StreamReader.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/NewEngine/src/New/Connector/StreamReader.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="44">
-              <caret line="2" column="20" selection-start-line="2" selection-start-column="20" selection-end-line="2" selection-end-column="20" />
+            <state relative-caret-position="611">
+              <caret line="52" selection-start-line="52" selection-end-line="52" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Message.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/NewEngine/src/New/Connector/Message.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="371">
+              <caret line="42" column="36" selection-start-line="42" selection-start-column="36" selection-end-line="42" selection-end-column="36" />
+              <folding>
+                <element signature="e#820#821#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="User.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/NewEngine/src/New/UserList/User.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="107">
+              <caret line="69" column="24" lean-forward="true" selection-start-line="69" selection-start-column="24" selection-end-line="69" selection-end-column="24" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ServerWorkerListener.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Server/src/sample/ServerWorkerListener.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="154">
+              <caret line="7" column="8" selection-start-line="7" selection-start-column="4" selection-end-line="7" selection-end-column="8" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ConnectionsInspector.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Server/src/sample/ConnectionsInspector.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="220">
+              <caret line="12" column="4" selection-start-line="12" selection-start-column="4" selection-end-line="12" selection-end-column="43" />
             </state>
           </provider>
         </entry>
@@ -66,6 +134,7 @@
       <list>
         <option value="Enum" />
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -75,8 +144,7 @@
     </findStrings>
   </component>
   <component name="Git.Settings">
-    <option name="UPDATE_CHANGES_POLICY" value="SHELVE" />
-    <option name="UPDATE_TYPE" value="MERGE" />
+    <option name="UPDATE_TYPE" value="REBASE" />
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HierarchyBrowserManager">
@@ -96,18 +164,21 @@
         <option value="$PROJECT_DIR$/NewEngine/src/Connector/TCPConnection.java" />
         <option value="$PROJECT_DIR$/NewEngine/src/Connector/Message.java" />
         <option value="$PROJECT_DIR$/Client/src/sample/AuthManager.java" />
-        <option value="$PROJECT_DIR$/NewEngine/src/New/UserList/User.java" />
         <option value="$PROJECT_DIR$/Client/src/sample/MassageManager.java" />
-        <option value="$PROJECT_DIR$/NewEngine/src/New/Connector/Message.java" />
         <option value="$PROJECT_DIR$/NewEngine/src/New/Connector/TCPConnectionListener.java" />
         <option value="$PROJECT_DIR$/Client/src/sample/WorkerListener.java" />
         <option value="$PROJECT_DIR$/Client/src/sample/Worker.java" />
         <option value="$PROJECT_DIR$/Client/src/controllers/CController.java" />
         <option value="$PROJECT_DIR$/Client/src/sample/StartClient.java" />
+        <option value="$PROJECT_DIR$/Server/src/sample/ConnectionCloser.java" />
+        <option value="$PROJECT_DIR$/Server/src/sample/ConnectionsInspector.java" />
+        <option value="$PROJECT_DIR$/Server/src/sample/ServerWorkerListener.java" />
+        <option value="$PROJECT_DIR$/Server/src/controllers/SController.java" />
+        <option value="$PROJECT_DIR$/NewEngine/src/New/Connector/Message.java" />
+        <option value="$PROJECT_DIR$/NewEngine/src/New/UserList/User.java" />
         <option value="$PROJECT_DIR$/NewEngine/src/New/Connector/StreamReader.java" />
         <option value="$PROJECT_DIR$/NewEngine/src/New/Connector/TCPConnection.java" />
         <option value="$PROJECT_DIR$/Server/src/sample/ServerWorker.java" />
-        <option value="$PROJECT_DIR$/Server/src/sample/ConnectionCloser.java" />
       </list>
     </option>
   </component>
@@ -121,10 +192,10 @@
     <packageJsonPaths />
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="281" />
-    <option name="y" value="39" />
-    <option name="width" value="1615" />
-    <option name="height" value="877" />
+    <option name="x" value="45" />
+    <option name="y" value="-10" />
+    <option name="width" value="1941" />
+    <option name="height" value="1064" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -332,7 +403,7 @@
       <updated>1544987227653</updated>
       <workItem from="1544987230782" duration="5948000" />
       <workItem from="1545075504902" duration="6953000" />
-      <workItem from="1545158282039" duration="1496000" />
+      <workItem from="1545158282039" duration="6233000" />
     </task>
     <task id="LOCAL-00001" summary="Добавляю возможность авторизации">
       <created>1544993192347</created>
@@ -348,11 +419,18 @@
       <option name="project" value="LOCAL" />
       <updated>1545159563642</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Тестирую гитхаб">
+      <created>1545159830247</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1545159830247</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="14397000" />
+    <option name="totallyTimeSpent" value="19134000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1840" height="1002" extended-state="6" />
@@ -360,36 +438,69 @@
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Messages" order="7" visible="true" weight="0.32868758" />
-      <window_info anchor="right" id="Palette&#9;" order="3" />
+      <window_info anchor="bottom" id="Messages" order="7" weight="0.32868758" />
+      <window_info anchor="right" id="Palette&#9;" order="4" />
       <window_info id="Image Layers" order="2" />
-      <window_info anchor="right" id="Capture Analysis" order="3" />
+      <window_info anchor="right" id="Capture Analysis" order="5" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
-      <window_info anchor="right" id="Maven Projects" order="3" />
+      <window_info anchor="right" x="0" y="0" width="410" height="802" id="Documentation" order="9" sideWeight="0.5011547" side_tool="true" weight="0.15185602" />
+      <window_info anchor="right" id="Maven Projects" order="6" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="7" />
+      <window_info anchor="bottom" id="Version Control" order="7" weight="0.329849" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.32897604" />
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="2" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25815523" />
-      <window_info anchor="right" id="Database" order="3" />
+      <window_info content_ui="combo" id="Project" order="0" weight="0.25815523" />
+      <window_info anchor="right" id="Database" order="7" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.329849" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info id="UI Designer" order="2" />
-      <window_info anchor="right" id="Theme Preview" order="3" />
+      <window_info anchor="right" id="Theme Preview" order="8" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39978212" />
       <window_info anchor="bottom" id="Tool Output" order="7" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="right" x="0" y="0" width="410" height="802" id="Documentation" order="3" sideWeight="0.5011547" side_tool="true" weight="0.19628796" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" sideWeight="0.49884528" weight="0.24971879" />
       <window_info anchor="bottom" id="ANTLR Preview" order="7" />
     </layout>
+    <layout-to-restore>
+      <window_info id="Designer" order="2" />
+      <window_info anchor="right" id="Palette" order="3" />
+      <window_info id="Image Layers" order="3" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32897604" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info id="UI Designer" order="4" />
+      <window_info id="Favorites" order="5" side_tool="true" />
+      <window_info anchor="bottom" id="Terminal" order="7" />
+      <window_info id="Capture Tool" order="6" />
+      <window_info anchor="right" id="Capture Analysis" order="5" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="bottom" id="Tool Output" order="8" />
+      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
+      <window_info anchor="bottom" id="Messages" order="10" weight="0.32868758" />
+      <window_info anchor="right" x="0" y="0" width="410" height="802" id="Documentation" order="9" sideWeight="0.5011547" side_tool="true" visible="true" weight="0.15185602" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" sideWeight="0.49884528" weight="0.24971879" />
+      <window_info anchor="bottom" id="Database Changes" order="11" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="12" weight="0.329849" />
+      <window_info anchor="right" id="Maven Projects" order="6" />
+      <window_info anchor="bottom" id="ANTLR Preview" order="13" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25815523" />
+      <window_info anchor="right" id="Database" order="7" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="right" id="Palette&#9;" order="4" />
+      <window_info anchor="right" id="Theme Preview" order="8" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="Find" order="1" visible="true" weight="0.329849" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.39978212" />
+    </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
@@ -400,25 +511,26 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Добавляю возможность авторизации" />
     <MESSAGE value="Добавляю возможность авторизации на сервере" />
-    <option name="LAST_COMMIT_MESSAGE" value="Добавляю возможность авторизации на сервере" />
+    <MESSAGE value="Тестирую гитхаб" />
+    <option name="LAST_COMMIT_MESSAGE" value="Тестирую гитхаб" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/NewEngine/src/New/Connector/TCPConnection.java</url>
-          <line>40</line>
+          <line>41</line>
           <properties />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/NewEngine/src/New/Connector/TCPConnection.java</url>
-          <line>38</line>
+          <line>39</line>
           <properties />
           <option name="timeStamp" value="1" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/NewEngine/src/New/Connector/TCPConnection.java</url>
-          <line>68</line>
+          <line>69</line>
           <properties />
           <option name="timeStamp" value="2" />
         </line-breakpoint>
@@ -431,6 +543,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2046">
           <caret line="93" column="5" lean-forward="true" selection-start-line="93" selection-start-column="5" selection-end-line="93" selection-end-column="5" />
+          <folding>
+            <element signature="e#2290#2291#0" expanded="true" />
+            <element signature="e#2327#2328#0" expanded="true" />
+            <element signature="e#2402#2403#0" expanded="true" />
+            <element signature="e#2430#2431#0" expanded="true" />
+            <element signature="e#2472#2473#0" expanded="true" />
+            <element signature="e#2506#2507#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -452,6 +572,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="850">
           <caret line="50" column="10" selection-start-line="50" selection-start-column="10" selection-end-line="50" selection-end-column="10" />
+          <folding>
+            <element signature="e#2290#2291#0" expanded="true" />
+            <element signature="e#2327#2328#0" expanded="true" />
+            <element signature="e#2402#2403#0" expanded="true" />
+            <element signature="e#2430#2431#0" expanded="true" />
+            <element signature="e#2472#2473#0" expanded="true" />
+            <element signature="e#2506#2507#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -553,8 +681,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/NewEngine/src/New/UserList/User.java" />
-    <entry file="file://$PROJECT_DIR$/NewEngine/src/New/Connector/Message.java" />
     <entry file="file://$PROJECT_DIR$/Client/src/sample/WorkerListener.java" />
     <entry file="file://$PROJECT_DIR$/Client/src/sample/StartClient.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -563,7 +689,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/NewEngine/src/New/Connector/StreamReader.java" />
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_172/src.zip!/java/lang/Thread.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="197">
@@ -573,15 +698,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/NewEngine/src/New/Connector/TCPConnectionListener.java" />
     <entry file="file://$PROJECT_DIR$/Client/src/sample/Worker.java" />
-    <entry file="file://$PROJECT_DIR$/NewEngine/src/New/Connector/TCPConnection.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="284">
-          <caret line="93" column="5" selection-start-line="93" selection-start-column="5" selection-end-line="93" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Server/src/sample/ServerWorker.java" />
-    <entry file="file://$PROJECT_DIR$/Server/src/sample/ConnectionCloser.java" />
     <entry file="file://$PROJECT_DIR$/Server/src/sample/дд.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="44">
@@ -589,17 +705,87 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Server/src/sample/ConnectionListManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="243">
-          <caret line="23" column="28" selection-start-line="23" selection-start-column="28" selection-end-line="23" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Server/src/sample/csssdsd.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="44">
           <caret line="2" column="20" selection-start-line="2" selection-start-column="20" selection-end-line="2" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Server/src/sample/ConnectionListManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="88">
+          <caret line="6" column="29" selection-start-line="6" selection-start-column="29" selection-end-line="6" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Server/src/sample/ServerWorkerListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="154">
+          <caret line="7" column="8" selection-start-line="7" selection-start-column="4" selection-end-line="7" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Server/src/sample/ConnectionsInspector.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="12" column="4" selection-start-line="12" selection-start-column="4" selection-end-line="12" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/NewEngine/src/New/Connector/Message.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="371">
+          <caret line="42" column="36" selection-start-line="42" selection-start-column="36" selection-end-line="42" selection-end-column="36" />
+          <folding>
+            <element signature="e#820#821#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/NewEngine/src/New/UserList/User.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="107">
+          <caret line="69" column="24" lean-forward="true" selection-start-line="69" selection-start-column="24" selection-end-line="69" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Server/src/controllers/SController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="110">
+          <caret line="11" column="57" selection-start-line="11" selection-start-column="36" selection-end-line="11" selection-end-column="57" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/NewEngine/src/New/Connector/StreamReader.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="611">
+          <caret line="52" selection-start-line="52" selection-end-line="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/NewEngine/src/New/Connector/TCPConnection.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="325">
+          <caret line="93" column="30" lean-forward="true" selection-start-line="93" selection-start-column="30" selection-end-line="93" selection-end-column="30" />
+          <folding>
+            <element signature="e#2290#2291#0" expanded="true" />
+            <element signature="e#2327#2328#0" expanded="true" />
+            <element signature="e#2402#2403#0" expanded="true" />
+            <element signature="e#2430#2431#0" expanded="true" />
+            <element signature="e#2472#2473#0" expanded="true" />
+            <element signature="e#2506#2507#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Server/src/sample/ServerWorker.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="396">
+          <caret line="65" column="56" lean-forward="true" selection-start-line="65" selection-start-column="56" selection-end-line="65" selection-end-column="56" />
         </state>
       </provider>
     </entry>
