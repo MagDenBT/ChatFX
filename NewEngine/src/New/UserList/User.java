@@ -2,7 +2,9 @@ package New.UserList;
 
 import javafx.scene.image.Image;
 
-public class User {
+import java.io.Serializable;
+
+public class User implements Serializable {
 
     private final String login;
     private final String password;

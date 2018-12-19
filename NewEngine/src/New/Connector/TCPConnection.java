@@ -37,8 +37,8 @@ public class TCPConnection {
 
     private void initialization() {
         try {
-            in = new ObjectInputStream (socket.getInputStream());
             out = new ObjectOutputStream(socket.getOutputStream());
+            in = new ObjectInputStream (socket.getInputStream());
             listener.onConnection(this);
         } catch (IOException e) {
             listener.connectionException(this, e);

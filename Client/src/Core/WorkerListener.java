@@ -1,4 +1,4 @@
-package sample;
+package Core;
 
 public interface WorkerListener {
 

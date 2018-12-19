@@ -20,7 +20,8 @@ class StreamReader {
             Message msg = null;
             while (!thread.isInterrupted()) {
                 try {
-                    msg = (Message) in.readObject();
+
+                        msg = (Message) in.readObject();
                 } catch (ClassNotFoundException e) {
                     //   тут подумать надо, как обработать ошибку
                 } catch (IOException e) {
@@ -37,9 +38,9 @@ class StreamReader {
                                 tcpConnection.isAuthorizated = listener.onAuthorization(tcpConnection, msg);
 
                         }
-                    }else {
-                        tcpConnection.closeConnection();
-                        break; //на всякий случай
+//                    }else {
+//                        tcpConnection.closeConnection();
+//                        break; //на всякий случай
                     }
                 }
                 }

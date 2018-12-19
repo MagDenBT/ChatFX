@@ -21,7 +21,7 @@ public class StartClient  extends Application {
         CController controller = loader.getController();
 
 
-      //  UsersManager.addUser(new WrapperUser("magden","Muhammad", "Bilto"));
+
        // controller.initializeUserList();
     }
 

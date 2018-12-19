@@ -1,4 +1,4 @@
-package sample;
+package Core;
 
 import New.Connector.Message;
 import New.Connector.MsgType;
@@ -49,6 +49,12 @@ public class Worker implements TCPConnectionListener {
 
     @Override
     public void onRecieveMessage(TCPConnection tcpConnection, Message msg) {
+        switch (msg.getType()) {
+            case isAuth:
+            case isTextMsg:
+                workerListener.gotTextMsg(msg.getUser().getLogin() + ": " + msg.getTextMsg());
+                break;
+        }
 
     }
 

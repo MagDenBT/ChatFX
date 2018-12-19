@@ -5,13 +5,13 @@ import javafx.collections.ObservableList;
 
 import java.util.ArrayList;
 
-public class UsersManager {
+public class FriendsManager {
 
     private static ObservableList<WrapperUser> usersList = FXCollections.observableList(new ArrayList<WrapperUser>());
 
-    public static void addUser(WrapperUser wrapperUser) {usersList.add(wrapperUser);}
+    public static void addFriend(WrapperUser wrapperUser) {usersList.add(wrapperUser);}
 
-    public static void removeUser(WrapperUser wrapperUser) {
+    public static void removeFriend(WrapperUser wrapperUser) {
         usersList.remove(wrapperUser);
     }
 

@@ -113,5 +113,10 @@
             <Image url="@../Assets/save.png" />
          </image>
       </ImageView>
+      <ImageView fx:id="iRestore" fitHeight="45.0" fitWidth="40.0" layoutX="460.0" layoutY="327.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Assets/open-folder.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

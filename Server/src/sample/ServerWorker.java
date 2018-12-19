@@ -74,9 +74,10 @@ public class ServerWorker implements TCPConnectionListener {
     @Override
     public synchronized void onRecieveMessage(TCPConnection tcpConnection, Message msg) {
         msg.setUser(new User(tcpConnection.getLogin()));
-        for (Map.Entry<String, TCPConnection> con :authorizedConnections.entrySet()) {
+        for (Map.Entry<String, TCPConnection> entry :authorizedConnections.entrySet()) {
+            TCPConnection con = entry.getValue();
             if(!con.equals(tcpConnection))
-                con.getValue().sendMessage(msg);
+                con.sendMessage(msg);
         }
     }
 

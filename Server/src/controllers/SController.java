@@ -5,43 +5,31 @@ import New.Connector.TCPConnectionListener;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import sample.ServerWorker;
+import sample.ServerWorkerListener;
 
 import java.io.IOException;
 import java.net.ServerSocket;
 
-public class SController implements TCPConnectionListener {
+public class SController implements ServerWorkerListener {
 
     public Label lConnectionCount;
     public Label lServerStatus;
     public Label totStatius;
-    private ServerSocket serverSocket;
-    private Thread connectionsLine;
+    private ServerWorker worker;
+    private final int PORT = 8199;
+    private final long maxTimeUnAuthorized = 5000;
+    private final long conInspectionTime = 10000;
+    private final int maxCountFailedAuthor = 3;
 
 
     @FXML
     public void initialize() {
         lConnectionCount.setText("0");
+        worker = new ServerWorker(PORT, maxTimeUnAuthorized, conInspectionTime, maxCountFailedAuthor, this);
     }
 
 
-    public void startServer() {
-        connectionsLine = new Thread(() -> {
-            try {
-                serverSocket = new ServerSocket(8189);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
-            while (true) {
-                try {
-                    new TCPConnection(serverSocket.accept(), SController.this);
-                } catch (IOException e) {
-                    connectionException(e);
-                }
-            }
-        });
-        connectionsLine.start();
-    }
 
     private void lConnectionCountChange(String value) {
         Platform.runLater(() -> {
@@ -49,36 +37,14 @@ public class SController implements TCPConnectionListener {
         });
     }
 
-    @Override
-    public synchronized void onConnection(TCPConnection tcpConnection) {
-        String count = Integer.toString(ConnectionListManager.addConnection(tcpConnection));
-        lConnectionCountChange(count);
-    }
 
     @Override
-    public synchronized void onDisconnection(TCPConnection tcpConnection) {
-        String count = Integer.toString(ConnectionListManager.deleteConnection(tcpConnection));
-        lConnectionCountChange(count);
-    }
-
-    @Override
-    public synchronized void onRecieveTextMessage(TCPConnection tcpConnection, String msg) {
-        ConnectionListManager.sendTextMsgtoAll(msg);
-    }
-
-    @Override
-    public synchronized void connectionException(Exception e) {
+    public void tcpConnectionCreateException(IOException e) {
 
     }
 
     @Override
-    public void connectionException(TCPConnection tcpConnection, Exception e) {
+    public void serverSocketCreateException(IOException e) {
 
     }
-
-    @Override
-    public synchronized void recieveMessageException(TCPConnection tcpConnection, Exception e) {
-
-    }
-
 }

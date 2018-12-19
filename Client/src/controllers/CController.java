@@ -1,9 +1,8 @@
 package controllers;
 
 
-import New.Connector.Message;
-import New.Connector.TCPConnection;
-import New.Connector.TCPConnectionListener;
+import Core.Worker;
+import Core.WorkerListener;
 import javafx.application.Platform;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -41,7 +40,7 @@ public class CController implements WorkerListener {
 
     private EventHandler<MouseEvent> me;
     private final String HOST = "127.0.0.1";
-    private final int PORT = 8189;
+    private final int PORT = 8199;
 //    private final Thread workerThread;
     private Worker worker;
 
@@ -79,7 +78,7 @@ public class CController implements WorkerListener {
 
     public void initializeUserList() {
         cUsers.setCellValueFactory(new PropertyValueFactory<WrapperUser, String>("firstLastName"));
-        usersList.setItems(UsersManager.getUsersList());
+        usersList.setItems(FriendsManager.getUsersList());
     }
 
     private void writeTaLog(String msg) {
