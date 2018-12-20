@@ -50,6 +50,8 @@ public class SignInController {
               tfPassword.setText(user.getPassword());
               tfFirstName.setText(user.getFirstName());
               tfLastName.setText(user.getLastName());
+              tfAge.setText(String.valueOf(user.getAge()));
+              tfSex.setText(user.getSex());
           }
           tfLogin.setText(dataSaver.restoreProfilFromFile(null));
       });
