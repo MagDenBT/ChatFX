@@ -7,46 +7,52 @@ import java.io.*;
 Объект, который отвечает за backup таких данных, как логин/пароль, история переписок и т.п.
  */
 public class DataSaver {
-    private User user;
     private ObjectOutputStream objectOutputStream;
     private ObjectInputStream objectInputStream;
-    private DataSaverListener dataSaverListener;
+    private final String settingsFileName;
+    private final String msgLogFileName;
+    private final String profilFileName;
 
+    public DataSaver(String settingsFileName, String msgLogFileName, String profilFileName) {
+        this.settingsFileName = settingsFileName;
+        this.msgLogFileName = msgLogFileName;
+        this.profilFileName = profilFileName;
+    }
 
+    public boolean saveProfil(User user) {
 
-    public void saveProfil(String fileName, User user) {
-
-        File file = new File("savTest");
-
+        File file = new File(profilFileName);
         try {
             file.createNewFile();
             objectOutputStream = new ObjectOutputStream(new FileOutputStream(file));
             objectOutputStream.writeObject(user);
             objectOutputStream.flush();
+            return true;
         } catch (IOException e) {
             e.printStackTrace();
+            return false;
         }
 
     }
 
 
-    public String restoreProfilFromFile(String fileName) {
+    public User restoreProfilFromFile() {
 
-        File file = new File("savTest");
+        File file = new File(profilFileName);
 
         try {
             file.createNewFile();
             objectInputStream = new ObjectInputStream(new FileInputStream(file));
-            return ((User)objectInputStream.readObject()).getLogin();
+            return (User) objectInputStream.readObject();
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
-            return "";
+            return null;
         } catch (FileNotFoundException e) {
             e.printStackTrace();
-            return "";
+            return null;
         } catch (IOException e) {
             e.printStackTrace();
-            return "";
+            return null;
         }
     }
 

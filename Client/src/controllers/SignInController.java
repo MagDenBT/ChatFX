@@ -27,6 +27,7 @@ public class SignInController {
     private TextField tfSex;
     @FXML
     private ImageView iSave;
+    private DataSaver dataSaver;
 
     @FXML
     public void initialize(){
@@ -36,17 +37,25 @@ public class SignInController {
               tfLogin.requestFocus();
               tfLogin.setPromptText("ЭТО ПОЛЯ ОБЯЗАТЕЛЬНО");
           }else {
-              DataSaver dataSaver = new DataSaver();
+
               dataSaver.saveProfil(null, new User(login));
           }
 
       });
 
       iRestore.addEventHandler(MouseEvent.MOUSE_CLICKED,(event)->{
-          DataSaver dataSaver = new DataSaver();
+          User user = dataSaver.restoreProfilFromFile();
+          if (user != null) {
+             tfLogin.setText(user.getLogin());
+              tfPassword.setText(user.getPassword());
+              tfFirstName.setText(user.getFirstName());
+              tfLastName.setText(user.getLastName());
+          }
           tfLogin.setText(dataSaver.restoreProfilFromFile(null));
       });
     }
 
-
+    public void setDataSaver(DataSaver dataSaver) {
+        this.dataSaver = dataSaver;
+    }
 }

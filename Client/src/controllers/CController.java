@@ -1,6 +1,7 @@
 package controllers;
 
 
+import Core.DataSaver;
 import Core.Worker;
 import Core.WorkerListener;
 import javafx.application.Platform;
@@ -38,16 +39,26 @@ public class CController implements WorkerListener {
     @FXML
     private Label lConnectionStatus;
 
-    private EventHandler<MouseEvent> me;
     private final String HOST = "127.0.0.1";
     private final int PORT = 8199;
-//    private final Thread workerThread;
     private Worker worker;
+    private DataSaver dataSaver;
+    private final String settingsFileName = "settings";
+    private final String msgLogFileName = "msgLog";
+    private final String profilFileName = "pr";
 
     @FXML
     public void initialize() {
+
         lConnectionStatus.setText("Подключаюсь к серверу");
-        me = (event) -> {
+        dataSaver = new DataSaver(settingsFileName,msgLogFileName,profilFileName);
+
+        new Thread(() -> {
+            worker = new Worker(CController.this, HOST, PORT, "testLogin", "testPassword");
+        }).start();
+
+
+       iSettings.addEventHandler(MouseEvent.MOUSE_CLICKED, (event) -> {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("../fxml/signIn.fxml"));
             try {
                 loader.load();
@@ -55,17 +66,14 @@ public class CController implements WorkerListener {
                 stage.setScene(new Scene(loader.getRoot()));
                 stage.initOwner(((Node) event.getSource()).getScene().getWindow());
                 stage.initModality(Modality.WINDOW_MODAL);
+                SignInController signInController = loader.getController();
+                signInController.setDataSaver(dataSaver);
                 stage.show();
             } catch (IOException e) {
                 e.printStackTrace();
             }
+        });
 
-        };
-        iSettings.addEventHandler(MouseEvent.MOUSE_CLICKED, me);
-
-       new Thread(() -> {
-            worker = new Worker(CController.this, HOST, PORT, "testLogin", "testPassword");
-        }).start();
 
     }
 
