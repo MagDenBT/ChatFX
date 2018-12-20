@@ -1,6 +1,6 @@
 package sample;
 
-import New.Connector.Message;
+import New.UserList.Message;
 import New.Connector.TCPConnection;
 import New.Connector.TCPConnectionListener;
 import New.UserList.User;

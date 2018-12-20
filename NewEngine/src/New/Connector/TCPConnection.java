@@ -1,5 +1,7 @@
 package New.Connector;
 
+import New.UserList.Message;
+
 import java.io.*;
 import java.net.Socket;
 

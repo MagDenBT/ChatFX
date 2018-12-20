@@ -3,6 +3,10 @@ package sample;
 import New.UserList.User;
 import javafx.beans.property.SimpleStringProperty;
 
+/*
+Обертка для класса User, дабы запихнуть поля последнего в TableView
+ */
+
 public class WrapperUser {
 
     private final SimpleStringProperty login;

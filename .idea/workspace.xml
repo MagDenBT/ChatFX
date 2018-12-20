@@ -1,29 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b0802967-54f9-48e4-ab17-6e6135e158ec" name="Default" comment="Исправлены баги в архитектуре ядра, работаю над">
-      <change afterPath="$PROJECT_DIR$/Client/src/Core/DataSaver.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Client/src/Core/DataSaverListener.java" afterDir="false" />
+    <list default="true" id="b0802967-54f9-48e4-ab17-6e6135e158ec" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Client/src/controllers/CController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/controllers/CController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Client/src/controllers/SignInController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/controllers/SignInController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Client/src/fxml/signIn.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/fxml/signIn.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Client/src/sample/StartClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/sample/StartClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Client/src/sample/UsersManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/sample/FriendsManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Client/src/sample/Worker.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/Core/Worker.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Client/src/sample/WorkerListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/Core/WorkerListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NewEngine/src/New/Connector/Message.java" beforeDir="false" afterPath="$PROJECT_DIR$/NewEngine/src/New/Connector/Message.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/src/Core/DataSaver.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/Core/DataSaver.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/src/Core/Worker.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/Core/Worker.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/src/sample/FriendsManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/sample/FriendsManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/src/sample/WrapperUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/sample/WrapperUser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NewEngine/src/New/Connector/Message.java" beforeDir="false" afterPath="$PROJECT_DIR$/NewEngine/src/New/UserList/Message.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NewEngine/src/New/Connector/MsgType.java" beforeDir="false" afterPath="$PROJECT_DIR$/NewEngine/src/New/UserList/MsgType.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/NewEngine/src/New/Connector/StreamReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/NewEngine/src/New/Connector/StreamReader.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/NewEngine/src/New/Connector/TCPConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/NewEngine/src/New/Connector/TCPConnection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NewEngine/src/New/Connector/TCPConnectionListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/NewEngine/src/New/Connector/TCPConnectionListener.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/NewEngine/src/New/UserList/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/NewEngine/src/New/UserList/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/src/controllers/SController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/controllers/SController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/src/sample/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/sample/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/sample/ConnectionsInspector.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/sample/ConnectionsInspector.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Server/src/sample/ServerWorker.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/sample/ServerWorker.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Client/controllers/CController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Client/controllers/CController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Client/sample/StartClient.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Client/sample/StartClient.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Server/controllers/SController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Server/controllers/SController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Server/sample/ConnectionListManager.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Server/sample/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Server/sample/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Client/controllers/SignInController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Client/controllers/SignInController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Client/fxml/signIn.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Client/fxml/signIn.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Client/sample/UsersManager.class" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -38,47 +32,40 @@
       <file leaf-file-name="FriendsManager.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Client/src/sample/FriendsManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="21" lean-forward="true" selection-start-line="21" selection-end-line="21" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Client/src/controllers/CController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="51">
-              <caret line="3" selection-start-line="3" selection-end-line="3" />
+            <state relative-caret-position="68">
+              <caret line="7" column="78" selection-start-line="7" selection-start-column="78" selection-end-line="7" selection-end-column="78" />
               <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#2774#2775#0" expanded="true" />
-                <element signature="e#2835#2836#0" expanded="true" />
-                <element signature="e#2960#2961#0" expanded="true" />
-                <element signature="e#3018#3019#0" expanded="true" />
-                <element signature="e#3069#3070#0" expanded="true" />
-                <element signature="e#3120#3121#0" expanded="true" />
+                <element signature="e#438#439#0" expanded="true" />
+                <element signature="e#483#484#0" expanded="true" />
+                <element signature="e#546#547#0" expanded="true" />
+                <element signature="e#578#579#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="signIn.fxml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Client/src/fxml/signIn.fxml">
-          <provider editor-type-id="JavaFX-Scene-Builder" />
+      <file leaf-file-name="WrapperUser.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Client/src/sample/WrapperUser.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="253">
-              <caret line="115" column="26" lean-forward="true" selection-start-line="115" selection-start-column="26" selection-end-line="115" selection-end-column="26" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SignInController.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Client/src/controllers/SignInController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="389">
-              <caret line="47" column="9" lean-forward="true" selection-start-line="47" selection-start-column="9" selection-end-line="47" selection-end-column="9" />
+            <state relative-caret-position="136">
+              <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
               <folding>
-                <element signature="imports" expanded="true" />
+                <element signature="e#709#710#0" expanded="true" />
+                <element signature="e#743#744#0" expanded="true" />
+                <element signature="e#794#795#0" expanded="true" />
+                <element signature="e#822#823#0" expanded="true" />
+                <element signature="e#858#859#0" expanded="true" />
+                <element signature="e#896#897#0" expanded="true" />
+                <element signature="e#951#952#0" expanded="true" />
+                <element signature="e#983#984#0" expanded="true" />
+                <element signature="e#1018#1019#0" expanded="true" />
+                <element signature="e#1055#1056#0" expanded="true" />
+                <element signature="e#1109#1110#0" expanded="true" />
+                <element signature="e#1140#1141#0" expanded="true" />
+                <element signature="e#1180#1181#0" expanded="true" />
+                <element signature="e#1222#1223#0" expanded="true" />
+                <element signature="e#1281#1282#0" expanded="true" />
+                <element signature="e#1317#1318#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -87,8 +74,8 @@
       <file leaf-file-name="DataSaver.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Client/src/Core/DataSaver.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="486">
-              <caret line="47" column="9" selection-start-line="47" selection-start-column="9" selection-end-line="47" selection-end-column="9" />
+            <state relative-caret-position="102">
+              <caret line="6" column="91" selection-start-line="6" selection-start-column="91" selection-end-line="6" selection-end-column="91" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -96,20 +83,27 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ObjectOutput.java" pinned="false" current-in-tab="false">
-        <entry file="jar://C:/Program Files/Java/jdk1.8.0_172/src.zip!/java/io/ObjectOutput.java">
+      <file leaf-file-name="Message.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/NewEngine/src/New/UserList/Message.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="112">
-              <caret line="39" column="7" lean-forward="true" selection-start-line="39" selection-start-column="7" selection-end-line="39" selection-end-column="7" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DataSaverListener.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Client/src/Core/DataSaverListener.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="2" column="34" selection-start-line="2" selection-start-column="34" selection-end-line="2" selection-end-column="34" />
+            <state relative-caret-position="119">
+              <caret line="7" column="23" lean-forward="true" selection-start-line="7" selection-start-column="23" selection-end-line="7" selection-end-column="23" />
+              <folding>
+                <element signature="e#494#495#0" expanded="true" />
+                <element signature="e#521#522#0" expanded="true" />
+                <element signature="e#550#551#0" expanded="true" />
+                <element signature="e#577#578#0" expanded="true" />
+                <element signature="e#611#612#0" expanded="true" />
+                <element signature="e#641#642#0" expanded="true" />
+                <element signature="e#674#675#0" expanded="true" />
+                <element signature="e#703#704#0" expanded="true" />
+                <element signature="e#748#749#0" expanded="true" />
+                <element signature="e#784#785#0" expanded="true" />
+                <element signature="e#822#823#0" expanded="true" />
+                <element signature="e#854#855#0" expanded="true" />
+                <element signature="e#887#888#0" expanded="true" />
+                <element signature="e#916#917#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -117,34 +111,86 @@
       <file leaf-file-name="Worker.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Client/src/Core/Worker.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+            <state relative-caret-position="102">
+              <caret line="10" column="53" selection-start-line="10" selection-start-column="53" selection-end-line="10" selection-end-column="53" />
               <folding>
-                <element signature="e#1263#1264#0" expanded="true" />
-                <element signature="e#1308#1309#0" expanded="true" />
-                <element signature="e#1386#1387#0" expanded="true" />
-                <element signature="e#1434#1435#0" expanded="true" />
-                <element signature="e#1815#1816#0" expanded="true" />
-                <element signature="e#1868#1869#0" expanded="true" />
+                <element signature="e#884#885#0" expanded="true" />
+                <element signature="e#931#932#0" expanded="true" />
+                <element signature="e#1266#1267#0" expanded="true" />
+                <element signature="e#1311#1312#0" expanded="true" />
+                <element signature="e#1389#1390#0" expanded="true" />
+                <element signature="e#1437#1438#0" expanded="true" />
+                <element signature="e#2032#2033#0" expanded="true" />
+                <element signature="e#2085#2086#0" expanded="true" />
+                <element signature="e#2180#2181#0" expanded="true" />
+                <element signature="e#2233#2234#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="StartClient.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Client/src/sample/StartClient.java">
+      <file leaf-file-name="TCPConnection.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/NewEngine/src/New/Connector/TCPConnection.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="23" selection-start-line="23" selection-end-line="23" />
+            <state relative-caret-position="1156">
+              <caret line="71" selection-start-line="71" selection-end-line="71" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="WorkerListener.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Client/src/Core/WorkerListener.java">
+      <file leaf-file-name="StreamReader.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/NewEngine/src/New/Connector/StreamReader.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="2" column="24" selection-start-line="2" selection-start-column="24" selection-end-line="2" selection-end-column="24" />
+            <state relative-caret-position="377">
+              <caret line="34" column="116" lean-forward="true" selection-start-line="34" selection-start-column="94" selection-end-line="34" selection-end-column="116" />
+              <folding>
+                <element signature="e#1876#1877#0" expanded="true" />
+                <element signature="e#1910#1911#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ConnectionsInspector.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Server/src/sample/ConnectionsInspector.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="119">
+              <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MsgType.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/NewEngine/src/New/UserList/MsgType.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="51">
+              <caret line="3" column="10" selection-start-line="3" selection-start-column="10" selection-end-line="3" selection-end-column="10" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="User.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/NewEngine/src/New/UserList/User.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="170">
+              <caret line="10" column="61" lean-forward="true" selection-start-line="10" selection-start-column="61" selection-end-line="10" selection-end-column="61" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#2084#2085#0" expanded="true" />
+                <element signature="e#2112#2113#0" expanded="true" />
+                <element signature="e#2147#2148#0" expanded="true" />
+                <element signature="e#2178#2179#0" expanded="true" />
+                <element signature="e#2214#2215#0" expanded="true" />
+                <element signature="e#2246#2247#0" expanded="true" />
+                <element signature="e#2281#2282#0" expanded="true" />
+                <element signature="e#2312#2313#0" expanded="true" />
+                <element signature="e#2339#2340#0" expanded="true" />
+                <element signature="e#2365#2366#0" expanded="true" />
+                <element signature="e#2395#2396#0" expanded="true" />
+                <element signature="e#2421#2422#0" expanded="true" />
+                <element signature="e#2452#2453#0" expanded="true" />
+                <element signature="e#2480#2481#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -190,22 +236,26 @@
         <option value="$PROJECT_DIR$/NewEngine/src/New/Connector/TCPConnectionListener.java" />
         <option value="$PROJECT_DIR$/Client/src/sample/WorkerListener.java" />
         <option value="$PROJECT_DIR$/Server/src/sample/ConnectionCloser.java" />
-        <option value="$PROJECT_DIR$/Server/src/sample/ConnectionsInspector.java" />
         <option value="$PROJECT_DIR$/Server/src/sample/ServerWorkerListener.java" />
         <option value="$PROJECT_DIR$/Server/src/controllers/SController.java" />
         <option value="$PROJECT_DIR$/Server/src/sample/Main.java" />
         <option value="$PROJECT_DIR$/Client/src/controllers/CController.java" />
         <option value="$PROJECT_DIR$/NewEngine/src/New/Connector/TCPConnection.java" />
         <option value="$PROJECT_DIR$/NewEngine/src/New/Connector/Message.java" />
-        <option value="$PROJECT_DIR$/NewEngine/src/New/UserList/User.java" />
-        <option value="$PROJECT_DIR$/NewEngine/src/New/Connector/StreamReader.java" />
         <option value="$PROJECT_DIR$/Client/src/sample/Worker.java" />
         <option value="$PROJECT_DIR$/Server/src/sample/ServerWorker.java" />
         <option value="$PROJECT_DIR$/Client/src/sample/StartClient.java" />
-        <option value="$PROJECT_DIR$/Client/src/sample/FriendsManager.java" />
-        <option value="$PROJECT_DIR$/Client/src/Core/DataSaver.java" />
         <option value="$PROJECT_DIR$/Client/src/fxml/signIn.fxml" />
         <option value="$PROJECT_DIR$/Client/src/controllers/SignInController.java" />
+        <option value="$PROJECT_DIR$/NewEngine/src/New/UserList/User.java" />
+        <option value="$PROJECT_DIR$/NewEngine/src/New/UserList/MsgType.java" />
+        <option value="$PROJECT_DIR$/NewEngine/src/New/UserList/Message.java" />
+        <option value="$PROJECT_DIR$/Client/src/sample/FriendsManager.java" />
+        <option value="$PROJECT_DIR$/Client/src/sample/WrapperUser.java" />
+        <option value="$PROJECT_DIR$/Client/src/Core/Worker.java" />
+        <option value="$PROJECT_DIR$/Client/src/Core/DataSaver.java" />
+        <option value="$PROJECT_DIR$/NewEngine/src/New/Connector/StreamReader.java" />
+        <option value="$PROJECT_DIR$/Server/src/sample/ConnectionsInspector.java" />
       </list>
     </option>
   </component>
@@ -218,9 +268,9 @@
   <component name="NodePackageJsonFileManager">
     <packageJsonPaths />
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="45" />
-    <option name="y" value="-10" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="-214" />
+    <option name="y" value="44" />
     <option name="width" value="1940" />
     <option name="height" value="1064" />
   </component>
@@ -305,6 +355,13 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="New" type="462c0819:PsiDirectoryNode" />
               <item name="Connector" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ChatFX" type="b2602c69:ProjectViewProjectNode" />
+              <item name="NewEngine" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="New" type="462c0819:PsiDirectoryNode" />
+              <item name="UserList" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="ChatFX" type="b2602c69:ProjectViewProjectNode" />
@@ -482,33 +539,37 @@
       <option name="project" value="LOCAL" />
       <updated>1545159830247</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Исправлены баги в архитектуре ядра, работаю над сохранением профиля в клиенте">
+      <created>1545230981580</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1545230981581</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
     <option name="totallyTimeSpent" value="19134000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="45" y="-10" width="1940" height="1064" extended-state="0" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Tool Output" order="7" />
-      <window_info anchor="bottom" id="Messages" order="7" weight="0.32868758" />
       <window_info anchor="right" id="Palette&#9;" order="4" />
       <window_info id="Image Layers" order="2" />
       <window_info anchor="right" id="Capture Analysis" order="5" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
-      <window_info anchor="right" x="0" y="0" width="434" height="856" id="Documentation" order="9" sideWeight="0.5011547" side_tool="true" weight="0.28464818" />
       <window_info anchor="right" id="Maven Projects" order="6" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.3261339" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.3261339" />
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.329849" />
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="2" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2574468" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32897604" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.26066098" />
       <window_info anchor="bottom" id="ANTLR Preview" order="7" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -516,13 +577,16 @@
       <window_info anchor="right" id="Theme Preview" order="8" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39978212" />
       <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Messages" order="7" weight="0.32868758" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32897604" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="right" id="Database" order="7" />
+      <window_info anchor="right" x="0" y="0" width="434" height="856" id="Documentation" order="9" sideWeight="0.5011547" side_tool="true" weight="0.28464818" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" sideWeight="0.49884528" weight="0.24971879" />
-      <window_info anchor="right" id="Database" order="7" />
     </layout>
     <layout-to-restore>
       <window_info id="Designer" order="2" />
@@ -568,26 +632,27 @@
     <MESSAGE value="Добавляю возможность авторизации" />
     <MESSAGE value="Добавляю возможность авторизации на сервере" />
     <MESSAGE value="Тестирую гитхаб" />
-    <option name="LAST_COMMIT_MESSAGE" value="Тестирую гитхаб" />
+    <MESSAGE value="Исправлены баги в архитектуре ядра, работаю над сохранением профиля в клиенте" />
+    <option name="LAST_COMMIT_MESSAGE" value="Исправлены баги в архитектуре ядра, работаю над сохранением профиля в клиенте" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/NewEngine/src/New/Connector/StreamReader.java</url>
-          <line>34</line>
+          <line>39</line>
           <properties />
           <option name="timeStamp" value="28" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/NewEngine/src/New/Connector/StreamReader.java</url>
-          <line>23</line>
+          <line>28</line>
           <properties />
           <option name="timeStamp" value="29" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/Client/src/Core/DataSaver.java</url>
-          <line>19</line>
+          <line>21</line>
           <properties />
           <option name="timeStamp" value="30" />
         </line-breakpoint>
@@ -648,7 +713,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/NewEngine/src/New/Connector/StreamReader.java" />
     <entry file="file://$PROJECT_DIR$/NewEngine/src/New/Connector/TCPConnectionListener.java" />
     <entry file="file://$PROJECT_DIR$/Client/src/controllers/CController.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -660,7 +724,7 @@
     <entry file="file://$PROJECT_DIR$/Client/src/sample/AuthManager.java" />
     <entry file="file://$PROJECT_DIR$/Client/src/sample/MassageManager.java" />
     <entry file="file://$PROJECT_DIR$/NewEngine/src/New/UserList/User.java" />
-    <entry file="file://$PROJECT_DIR$/NewEngine/src/New/Connector/MsgType.java" />
+    <entry file="file://$PROJECT_DIR$/NewEngine/src/New/UserList/MsgType.java" />
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_172/src.zip!/java/io/ObjectInput.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="836">
@@ -668,7 +732,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/NewEngine/src/New/Connector/Message.java" />
+    <entry file="file://$PROJECT_DIR$/NewEngine/src/New/UserList/Message.java" />
     <entry file="file://$PROJECT_DIR$/Engine/src/NewConnector/NewTCPConnectionListener.java" />
     <entry file="file://$PROJECT_DIR$/Engine/src/NewConnector/NewStreamReader.java" />
     <entry file="file://$PROJECT_DIR$/Engine/src/NewConnector/NewTCPConnection.java" />
@@ -770,74 +834,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Server/src/sample/ConnectionsInspector.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="14" column="77" selection-start-line="14" selection-start-column="77" selection-end-line="14" selection-end-column="77" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/NewEngine/src/New/Connector/Message.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="29" selection-start-line="29" selection-end-line="29" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#460#461#0" expanded="true" />
-            <element signature="e#487#488#0" expanded="true" />
-            <element signature="e#543#544#0" expanded="true" />
-            <element signature="e#788#789#0" expanded="true" />
-            <element signature="e#820#821#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/NewEngine/src/New/UserList/User.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="222">
-          <caret line="80" selection-start-line="80" selection-end-line="80" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#2018#2019#0" expanded="true" />
-            <element signature="e#2046#2047#0" expanded="true" />
-            <element signature="e#2112#2113#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/NewEngine/src/New/Connector/MsgType.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" selection-start-line="2" selection-end-line="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/NewEngine/src/New/Connector/TCPConnection.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="188">
-          <caret line="71" selection-start-line="71" selection-end-line="71" />
-          <folding>
-            <element signature="e#2403#2404#0" expanded="true" />
-            <element signature="e#2459#2460#0" expanded="true" />
-            <element signature="e#2504#2505#0" expanded="true" />
-            <element signature="e#2532#2533#0" expanded="true" />
-            <element signature="e#2587#2588#0" expanded="true" />
-            <element signature="e#2621#2622#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/NewEngine/src/New/Connector/StreamReader.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="336">
-          <caret line="33" column="40" selection-start-line="33" selection-start-column="40" selection-end-line="33" selection-end-column="40" />
-          <folding>
-            <element signature="e#1783#1784#0" expanded="true" />
-            <element signature="e#1817#1818#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Server/src/sample/ServerWorker.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="422">
@@ -853,28 +849,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
           <caret line="23" selection-start-line="23" selection-end-line="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Client/src/sample/FriendsManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="21" lean-forward="true" selection-start-line="21" selection-end-line="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Client/src/Core/Worker.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
-          <folding>
-            <element signature="e#1263#1264#0" expanded="true" />
-            <element signature="e#1308#1309#0" expanded="true" />
-            <element signature="e#1386#1387#0" expanded="true" />
-            <element signature="e#1434#1435#0" expanded="true" />
-            <element signature="e#1815#1816#0" expanded="true" />
-            <element signature="e#1868#1869#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -906,33 +880,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_172/src.zip!/java/io/ObjectOutput.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="112">
-          <caret line="39" column="7" lean-forward="true" selection-start-line="39" selection-start-column="7" selection-end-line="39" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Client/src/controllers/CController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="51">
           <caret line="3" selection-start-line="3" selection-end-line="3" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#2774#2775#0" expanded="true" />
-            <element signature="e#2835#2836#0" expanded="true" />
-            <element signature="e#2960#2961#0" expanded="true" />
-            <element signature="e#3018#3019#0" expanded="true" />
-            <element signature="e#3069#3070#0" expanded="true" />
-            <element signature="e#3120#3121#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Client/src/Core/DataSaver.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="486">
-          <caret line="47" column="9" selection-start-line="47" selection-start-column="9" selection-end-line="47" selection-end-column="9" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -942,18 +893,171 @@
     <entry file="file://$PROJECT_DIR$/Client/src/fxml/signIn.fxml">
       <provider editor-type-id="JavaFX-Scene-Builder" />
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="253">
-          <caret line="115" column="26" lean-forward="true" selection-start-line="115" selection-start-column="26" selection-end-line="115" selection-end-column="26" />
+        <state relative-caret-position="1955">
+          <caret line="115" column="26" selection-start-line="115" selection-start-column="26" selection-end-line="115" selection-end-column="26" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Client/src/controllers/SignInController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="389">
-          <caret line="47" column="9" lean-forward="true" selection-start-line="47" selection-start-column="9" selection-end-line="47" selection-end-column="9" />
+        <state relative-caret-position="408">
+          <caret line="24" column="28" lean-forward="true" selection-start-line="24" selection-start-column="28" selection-end-line="24" selection-end-column="28" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_172/src.zip!/java/io/ObjectOutput.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="39" column="7" selection-start-line="39" selection-start-column="7" selection-end-line="39" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/NewEngine/src/New/UserList/User.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="61" lean-forward="true" selection-start-line="10" selection-start-column="61" selection-end-line="10" selection-end-column="61" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#2084#2085#0" expanded="true" />
+            <element signature="e#2112#2113#0" expanded="true" />
+            <element signature="e#2147#2148#0" expanded="true" />
+            <element signature="e#2178#2179#0" expanded="true" />
+            <element signature="e#2214#2215#0" expanded="true" />
+            <element signature="e#2246#2247#0" expanded="true" />
+            <element signature="e#2281#2282#0" expanded="true" />
+            <element signature="e#2312#2313#0" expanded="true" />
+            <element signature="e#2339#2340#0" expanded="true" />
+            <element signature="e#2365#2366#0" expanded="true" />
+            <element signature="e#2395#2396#0" expanded="true" />
+            <element signature="e#2421#2422#0" expanded="true" />
+            <element signature="e#2452#2453#0" expanded="true" />
+            <element signature="e#2480#2481#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/NewEngine/src/New/UserList/MsgType.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="10" selection-start-line="3" selection-start-column="10" selection-end-line="3" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/NewEngine/src/New/UserList/Message.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="23" lean-forward="true" selection-start-line="7" selection-start-column="23" selection-end-line="7" selection-end-column="23" />
+          <folding>
+            <element signature="e#494#495#0" expanded="true" />
+            <element signature="e#521#522#0" expanded="true" />
+            <element signature="e#550#551#0" expanded="true" />
+            <element signature="e#577#578#0" expanded="true" />
+            <element signature="e#611#612#0" expanded="true" />
+            <element signature="e#641#642#0" expanded="true" />
+            <element signature="e#674#675#0" expanded="true" />
+            <element signature="e#703#704#0" expanded="true" />
+            <element signature="e#748#749#0" expanded="true" />
+            <element signature="e#784#785#0" expanded="true" />
+            <element signature="e#822#823#0" expanded="true" />
+            <element signature="e#854#855#0" expanded="true" />
+            <element signature="e#887#888#0" expanded="true" />
+            <element signature="e#916#917#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Client/src/sample/FriendsManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="7" column="78" selection-start-line="7" selection-start-column="78" selection-end-line="7" selection-end-column="78" />
+          <folding>
+            <element signature="e#438#439#0" expanded="true" />
+            <element signature="e#483#484#0" expanded="true" />
+            <element signature="e#546#547#0" expanded="true" />
+            <element signature="e#578#579#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Client/src/sample/WrapperUser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+          <folding>
+            <element signature="e#709#710#0" expanded="true" />
+            <element signature="e#743#744#0" expanded="true" />
+            <element signature="e#794#795#0" expanded="true" />
+            <element signature="e#822#823#0" expanded="true" />
+            <element signature="e#858#859#0" expanded="true" />
+            <element signature="e#896#897#0" expanded="true" />
+            <element signature="e#951#952#0" expanded="true" />
+            <element signature="e#983#984#0" expanded="true" />
+            <element signature="e#1018#1019#0" expanded="true" />
+            <element signature="e#1055#1056#0" expanded="true" />
+            <element signature="e#1109#1110#0" expanded="true" />
+            <element signature="e#1140#1141#0" expanded="true" />
+            <element signature="e#1180#1181#0" expanded="true" />
+            <element signature="e#1222#1223#0" expanded="true" />
+            <element signature="e#1281#1282#0" expanded="true" />
+            <element signature="e#1317#1318#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Client/src/Core/Worker.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="10" column="53" selection-start-line="10" selection-start-column="53" selection-end-line="10" selection-end-column="53" />
+          <folding>
+            <element signature="e#884#885#0" expanded="true" />
+            <element signature="e#931#932#0" expanded="true" />
+            <element signature="e#1266#1267#0" expanded="true" />
+            <element signature="e#1311#1312#0" expanded="true" />
+            <element signature="e#1389#1390#0" expanded="true" />
+            <element signature="e#1437#1438#0" expanded="true" />
+            <element signature="e#2032#2033#0" expanded="true" />
+            <element signature="e#2085#2086#0" expanded="true" />
+            <element signature="e#2180#2181#0" expanded="true" />
+            <element signature="e#2233#2234#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Client/src/Core/DataSaver.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="91" selection-start-line="6" selection-start-column="91" selection-end-line="6" selection-end-column="91" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/NewEngine/src/New/Connector/TCPConnection.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1156">
+          <caret line="71" selection-start-line="71" selection-end-line="71" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/NewEngine/src/New/Connector/StreamReader.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="377">
+          <caret line="34" column="116" lean-forward="true" selection-start-line="34" selection-start-column="94" selection-end-line="34" selection-end-column="116" />
+          <folding>
+            <element signature="e#1876#1877#0" expanded="true" />
+            <element signature="e#1910#1911#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Server/src/sample/ConnectionsInspector.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
         </state>
       </provider>
     </entry>

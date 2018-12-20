@@ -1,11 +1,15 @@
 package Core;
 
-import New.Connector.Message;
-import New.Connector.MsgType;
+import New.UserList.Message;
+import New.UserList.MsgType;
 import New.Connector.TCPConnection;
 import New.Connector.TCPConnectionListener;
 import New.UserList.User;
-
+/*
+Собственно, это и есть мотор клиентской части чата.
+Являясь слушателем для TCPConnection, он обрабатывает события от соединения и генерирует события для WorkerListener,
+которым является главный Контроллер GUI(CController).
+ */
 public class Worker implements TCPConnectionListener {
 
     private TCPConnection tcpConnection;

@@ -1,10 +1,15 @@
 package New.Connector;
 
 
+import New.UserList.Message;
+
 import java.io.IOException;
 import java.io.ObjectInputStream;
 
-
+/*
+Класс, отвечающие за чтение и обработку сообщений из входящего потока.
+Работает в отдельном потоке
+ */
 class StreamReader {
     private final ObjectInputStream in;
     private final TCPConnection tcpConnection;
@@ -27,7 +32,7 @@ class StreamReader {
                 } catch (IOException e) {
                       listener.recieveMessageException(tcpConnection, e);
                       tcpConnection.closeConnection();
-                      break; //на всякий случай
+                      break; //на всякий случай.Если цикл не будет прибит, прервем его здесь. Карочь, по-любому хана
                 }finally {
                     if (msg != null) {
                         switch (msg.getType()) {
@@ -38,9 +43,6 @@ class StreamReader {
                                 tcpConnection.isAuthorizated = listener.onAuthorization(tcpConnection, msg);
 
                         }
-//                    }else {
-//                        tcpConnection.closeConnection();
-//                        break; //на всякий случай
                     }
                 }
                 }

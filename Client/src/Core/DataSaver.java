@@ -3,7 +3,9 @@ package Core;
 import New.UserList.User;
 
 import java.io.*;
-
+/*
+Объект, который отвечает за backup таких данных, как логин/пароль, история переписок и т.п.
+ */
 public class DataSaver {
     private User user;
     private ObjectOutputStream objectOutputStream;

@@ -1,5 +1,7 @@
 package New.Connector;
 
+import New.UserList.Message;
+
 public interface TCPConnectionListener {
 
     void onConnection(TCPConnection tcpConnection);
