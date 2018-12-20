@@ -38,7 +38,7 @@ public class SignInController {
               tfLogin.setPromptText("ЭТО ПОЛЯ ОБЯЗАТЕЛЬНО");
           }else {
 
-              dataSaver.saveProfil(null, new User(login));
+              dataSaver.saveProfil(new User(login));
           }
 
       });
@@ -53,11 +53,10 @@ public class SignInController {
               tfAge.setText(String.valueOf(user.getAge()));
               tfSex.setText(user.getSex());
           }
-          tfLogin.setText(dataSaver.restoreProfilFromFile(null));
       });
     }
 
-    public void setDataSaver(DataSaver dataSaver) {
+     void setDataSaver(DataSaver dataSaver) {
         this.dataSaver = dataSaver;
     }
 }
