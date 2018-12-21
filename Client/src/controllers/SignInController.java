@@ -1,13 +1,11 @@
 package controllers;
 
 import Core.DataSaver;
-import New.UserList.User;
+import UserList.User;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-
-import java.beans.EventHandler;
 
 public class SignInController {
 
@@ -38,7 +36,7 @@ public class SignInController {
               tfLogin.setPromptText("ЭТО ПОЛЯ ОБЯЗАТЕЛЬНО");
           }else {
 
-              dataSaver.saveProfil(new User(login));
+              dataSaver.createProfil(new User(login));
           }
 
       });

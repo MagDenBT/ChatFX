@@ -1,6 +1,6 @@
 package sample;
 
-import New.Connector.TCPConnection;
+import Connector.TCPConnection;
 
 import java.util.ArrayList;
 /*

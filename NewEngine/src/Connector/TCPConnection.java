@@ -1,6 +1,6 @@
-package New.Connector;
+package Connector;
 
-import New.UserList.Message;
+import UserList.Message;
 
 import java.io.*;
 import java.net.Socket;

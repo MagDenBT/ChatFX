@@ -1,6 +1,6 @@
 package sample;
 
-import New.UserList.User;
+import UserList.User;
 import javafx.beans.property.SimpleStringProperty;
 
 /*

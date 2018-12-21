@@ -4,19 +4,21 @@ package controllers;
 import Core.DataSaver;
 import Core.Worker;
 import Core.WorkerListener;
+import UserList.User;
 import javafx.application.Platform;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.paint.Color;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import sample.*;
 import javafx.scene.image.ImageView;
+
 
 
 import java.io.IOException;
@@ -24,6 +26,10 @@ import java.io.IOException;
 
 public class CController implements WorkerListener {
 
+    @FXML
+    private Label lFirstLastName;
+    @FXML
+    private ImageView iAvatar;
     @FXML
     private ImageView iSettings;
     @FXML
@@ -43,38 +49,52 @@ public class CController implements WorkerListener {
     private final int PORT = 8199;
     private Worker worker;
     private DataSaver dataSaver;
-    private final String settingsFileName = "settings";
-    private final String msgLogFileName = "msgLog";
-    private final String profilFileName = "pr";
 
+    private User user;
     @FXML
     public void initialize() {
 
-        lConnectionStatus.setText("Подключаюсь к серверу");
-        dataSaver = new DataSaver(settingsFileName,msgLogFileName,profilFileName);
+        if(!initDataSaver()) {
+            user = dataSaver.getUser();
+            toAuthOnServer();
+            setProfilLabels(user);
+        }
 
-        new Thread(() -> {
-            worker = new Worker(CController.this, HOST, PORT, "testLogin", "testPassword");
-        }).start();
+        new Thread(() -> worker = new Worker(CController.this)).start();
+    }
 
+    private void setProfilLabels(User user) {
+        if (user != null) {
+            iAvatar.setImage(user.getPhoto());
+            lFirstLastName.setText(user.getFirstName() + " " +  user.getLastName());
+            lFirstLastName.setTextFill(new Color(91,181f,245,0.2));
+        }
+    }
 
-       iSettings.addEventHandler(MouseEvent.MOUSE_CLICKED, (event) -> {
+    public void clickOnProfilGroup(MouseEvent mouseEvent) {
+        openProfilWindow();
+    }
+
+    private void openProfilWindow(){
+        try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("../fxml/signIn.fxml"));
-            try {
-                loader.load();
-                Stage stage = new Stage();
-                stage.setScene(new Scene(loader.getRoot()));
-                stage.initOwner(((Node) event.getSource()).getScene().getWindow());
-                stage.initModality(Modality.WINDOW_MODAL);
-                SignInController signInController = loader.getController();
-                signInController.setDataSaver(dataSaver);
-                stage.show();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        });
+            loader.load();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(loader.getRoot()));
+            stage.initOwner(taLog.getScene().getWindow());
+            stage.initModality(Modality.WINDOW_MODAL);
+            SignInController signInController = loader.getController();
+            signInController.setDataSaver(dataSaver);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
-
+    private void toAuthOnServer(){
+        new Thread(()->{
+            worker.startConnection(HOST,PORT,user.getLogin(), user.getPassword());
+        }).start();
     }
 
     public void sendMsg() {
@@ -84,6 +104,36 @@ public class CController implements WorkerListener {
                      tfInput.clear();
     }
 
+    private boolean initDataSaver(){
+        try {
+            dataSaver = new DataSaver();
+            return true;
+        } catch (IOException e) {
+            createErrorWindow(e.getMessage());
+            return false;
+        } catch (ClassNotFoundException e) {
+            createErrorWindow(e.getMessage());
+            return false;
+        }
+
+    }
+
+    private void createErrorWindow(String errorText) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("fxml/Error.fxml"));
+            loader.load();
+            Parent root = loader.getRoot();
+            Stage stage = new Stage();
+            stage.setTitle("Error");
+            stage.setScene(new Scene(root));
+            stage.initModality(Modality.WINDOW_MODAL);
+            stage.initOwner(taLog.getScene().getWindow());
+            ((ErrorController) loader.getController()).setlErrorText(errorText);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
     public void initializeUserList() {
         cUsers.setCellValueFactory(new PropertyValueFactory<WrapperUser, String>("firstLastName"));
         usersList.setItems(FriendsManager.getUsersList());
@@ -94,8 +144,11 @@ public class CController implements WorkerListener {
 
     }
 
-    private void lConnectionStatusChanger(String value) {
-        Platform.runLater(() -> lConnectionStatus.setText(value));
+    private void lConnectionStatusChanger(String value, Color color) {
+        Platform.runLater(() -> {
+            lConnectionStatus.setText(value);
+            lConnectionStatus.setTextFill(color);
+        });
     }
 
 
@@ -108,7 +161,7 @@ public class CController implements WorkerListener {
 
     @Override
     public void connectionException(Exception e) {
-        lConnectionStatusChanger("Сервер недоступен");
+        lConnectionStatusChanger("Сервер недоступен",Color.RED);
     }
 
     @Override
@@ -118,17 +171,17 @@ public class CController implements WorkerListener {
 
     @Override
     public void onConnection() {
-        lConnectionStatusChanger("Не авторизован");
+        lConnectionStatusChanger("Не авторизован", Color.YELLOW);
     }
 
     @Override
     public void onDisconnection() {
-        lConnectionStatusChanger("Оффлайн");
+        lConnectionStatusChanger("Оффлайн",Color.RED);
     }
 
     @Override
     public void signIn(boolean answer) {
-        lConnectionStatusChanger("В сети");
+        lConnectionStatusChanger("В сети", Color.GREEN);
     }
 
 

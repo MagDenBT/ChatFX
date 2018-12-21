@@ -1,10 +1,9 @@
 package Core;
 
-import New.UserList.Message;
-import New.UserList.MsgType;
-import New.Connector.TCPConnection;
-import New.Connector.TCPConnectionListener;
-import New.UserList.User;
+import UserList.Message;
+import Connector.TCPConnection;
+import Connector.TCPConnectionListener;
+import UserList.User;
 /*
 Собственно, это и есть мотор клиентской части чата.
 Являясь слушателем для TCPConnection, он обрабатывает события от соединения и генерирует события для WorkerListener,
@@ -14,27 +13,24 @@ public class Worker implements TCPConnectionListener {
 
     private TCPConnection tcpConnection;
     private final WorkerListener workerListener;
+    private User user;
 
 
-    public Worker(WorkerListener workerListener, String IP, int PORT, String login, String password) {
+    public Worker(WorkerListener workerListener, String IP, int PORT, User user) {
         this.workerListener = workerListener;
-        startConnection(IP, PORT, login, password);
-    }
-
-
-    public void startConnection(String IP, int PORT, String login, String password) {
         tcpConnection = new TCPConnection(IP, PORT, Worker.this);
         if (tcpConnection.getSocket() != null)
-            tcpConnection.sendMessage(new Message(MsgType.isAuth, new User(login, password), null));
+            tcpConnection.sendMessage(new Message(user));
     }
 
-    public void stopConnection() {
+
+    public synchronized void stopConnection() {
         tcpConnection.closeConnection();
     }
 
     public boolean sendTextMsg(User user, String msg) {
         if (tcpConnection.getSocket() != null) {
-            tcpConnection.sendMessage(new Message(MsgType.isTextMsg, user, msg));
+            tcpConnection.sendMessage(new Message(msg));
             return true;
         }else
             return false;

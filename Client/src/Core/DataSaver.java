@@ -1,59 +1,41 @@
 package Core;
 
-import New.UserList.User;
+import UserList.User;
 
 import java.io.*;
 /*
 Объект, который отвечает за backup таких данных, как логин/пароль, история переписок и т.п.
  */
 public class DataSaver {
-    private ObjectOutputStream objectOutputStream;
-    private ObjectInputStream objectInputStream;
-    private final String settingsFileName;
-    private final String msgLogFileName;
-    private final String profilFileName;
+    private static String settingsFileName = "settings";
+    private static String msgLogFileName = "msgLog";
+    private static String profilFileName = "pr";
+    private User user;
 
-    public DataSaver(String settingsFileName, String msgLogFileName, String profilFileName) {
-        this.settingsFileName = settingsFileName;
-        this.msgLogFileName = msgLogFileName;
-        this.profilFileName = profilFileName;
+    public DataSaver() throws IOException, ClassNotFoundException {
+        ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream(profilFileName));
+        user = (User) objectInputStream.readObject();
+        objectInputStream.close();
     }
 
-    public boolean saveProfil(User user) {
 
-        File file = new File(profilFileName);
+    public User getUser() {
+        return user;
+    }
+
+    public static boolean createProfil(User user){
+
         try {
-            file.createNewFile();
-            objectOutputStream = new ObjectOutputStream(new FileOutputStream(file));
+            ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream(profilFileName));
             objectOutputStream.writeObject(user);
             objectOutputStream.flush();
+            objectOutputStream.close();
             return true;
         } catch (IOException e) {
             e.printStackTrace();
             return false;
         }
 
-    }
-
-
-    public User restoreProfilFromFile() {
-
-        File file = new File(profilFileName);
-
-        try {
-            file.createNewFile();
-            objectInputStream = new ObjectInputStream(new FileInputStream(file));
-            return (User) objectInputStream.readObject();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-            return null;
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-            return null;
-        } catch (IOException e) {
-            e.printStackTrace();
-            return null;
-        }
     }
 
 }

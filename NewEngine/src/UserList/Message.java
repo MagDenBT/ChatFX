@@ -1,4 +1,4 @@
-package New.UserList;
+package UserList;
 
 import java.io.Serializable;
 /*
@@ -16,14 +16,14 @@ public class Message implements Serializable {
     private boolean signIn;
     private String signUp;
 
-    public Message(MsgType type, User user, String textMsg) {
-        if(type != MsgType.isAuth)
-            this.textMsg = textMsg;
+    public Message(String textMsg) {
+        type = MsgType.isTextMsg;
+        this.textMsg = textMsg;
+    }
 
-        this.type = type;
+    public Message(User user) {
+        type = MsgType.isAuth;
         this.user = user;
-        this.signIn = false;
-
     }
 
     public MsgType getType() {

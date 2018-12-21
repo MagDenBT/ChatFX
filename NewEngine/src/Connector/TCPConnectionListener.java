@@ -1,6 +1,6 @@
-package New.Connector;
+package Connector;
 
-import New.UserList.Message;
+import UserList.Message;
 
 public interface TCPConnectionListener {
 

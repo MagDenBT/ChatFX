@@ -1,4 +1,4 @@
-package New.UserList;
+package UserList;
 
 import javafx.scene.image.Image;
 

@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.Group?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -13,7 +20,7 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<GridPane alignment="center" hgap="10" vgap="10" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.CController">
+<GridPane alignment="center" hgap="10" vgap="10" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.CController">
    <columnConstraints>
       <ColumnConstraints />
    </columnConstraints>
@@ -23,10 +30,9 @@
    <children>
       <AnchorPane prefHeight="600.0" prefWidth="800.0">
          <children>
-            <TextField fx:id="tfNickname" layoutX="290.0" layoutY="14.0" prefHeight="29.0" prefWidth="196.0" promptText="Введите свой ник" />
             <TextArea fx:id="taLog" editable="false" layoutX="290.0" layoutY="44.0" prefHeight="433.0" prefWidth="482.0" />
             <TextField fx:id="tfInput" layoutX="290.0" layoutY="482.0" onAction="#sendMsg" prefHeight="71.0" prefWidth="291.0" promptText="Написать сообщение..." />
-            <Label fx:id="lConnectionStatus" layoutX="559.0" layoutY="14.0" prefHeight="17.0" prefWidth="227.0">
+            <Label fx:id="lConnectionStatus" layoutX="622.0" layoutY="8.0" prefHeight="27.0" prefWidth="164.0" text="Оффлайн" textAlignment="CENTER" textFill="#f50707">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
@@ -44,6 +50,16 @@
                   <Image url="@../Assets/settings.png" />
                </image>
             </ImageView>
+            <Group fx:id="gProfilGroup" onMousePressed="#clickOnProfilGroup">
+               <children>
+                  <Label fx:id="lFirstLastName" layoutX="332.0" layoutY="2.0" prefHeight="38.0" prefWidth="181.0" text="Нет профиля" textFill="#cf3a3ad0" />
+                  <ImageView fx:id="iAvatar" fitHeight="36.0" fitWidth="37.0" layoutX="290.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Assets/emptyPhoto.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Group>
          </children>
          <opaqueInsets>
             <Insets />

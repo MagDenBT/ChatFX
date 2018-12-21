@@ -1,7 +1,7 @@
-package New.Connector;
+package Connector;
 
 
-import New.UserList.Message;
+import UserList.Message;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;

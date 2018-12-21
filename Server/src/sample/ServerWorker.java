@@ -1,9 +1,9 @@
 package sample;
 
-import New.UserList.Message;
-import New.Connector.TCPConnection;
-import New.Connector.TCPConnectionListener;
-import New.UserList.User;
+import UserList.Message;
+import Connector.TCPConnection;
+import Connector.TCPConnectionListener;
+import UserList.User;
 
 import java.io.IOException;
 import java.net.ServerSocket;

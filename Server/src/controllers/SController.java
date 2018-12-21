@@ -1,7 +1,5 @@
 package controllers;
 
-import New.Connector.TCPConnection;
-import New.Connector.TCPConnectionListener;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -9,7 +7,6 @@ import sample.ServerWorker;
 import sample.ServerWorkerListener;
 
 import java.io.IOException;
-import java.net.ServerSocket;
 
 public class SController implements ServerWorkerListener {
 
