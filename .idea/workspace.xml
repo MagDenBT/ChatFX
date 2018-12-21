@@ -1,16 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b0802967-54f9-48e4-ab17-6e6135e158ec" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/Client/src/controllers/ErrorController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Client/src/fxml/Error.fxml" afterDir="false" />
+    <list default="true" id="b0802967-54f9-48e4-ab17-6e6135e158ec" name="Default" comment="Работаю над сохранением настроек клиента">
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Client/src/Core/DataSaver.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/Core/DataSaver.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Client/src/Core/Worker.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/Core/Worker.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Client/src/controllers/CController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/controllers/CController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Client/src/controllers/SignInController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/controllers/SignInController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Client/src/fxml/client.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/fxml/client.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NewEngine/src/New/UserList/Message.java" beforeDir="false" afterPath="$PROJECT_DIR$/NewEngine/src/New/UserList/Message.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/Client.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Client/Client.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/Server.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Server/Server.iml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -22,11 +17,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="CController.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="CController.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Client/src/controllers/CController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="409">
-              <caret line="64" column="59" selection-start-line="64" selection-start-column="59" selection-end-line="64" selection-end-column="59" />
+            <state relative-caret-position="1054">
+              <caret line="62" column="59" selection-start-line="62" selection-start-column="59" selection-end-line="62" selection-end-column="59" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#1541#1542#0" expanded="true" />
@@ -46,20 +41,20 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Worker.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Worker.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Client/src/Core/Worker.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="25" lean-forward="true" selection-start-line="25" selection-end-line="25" />
+            <state relative-caret-position="442">
+              <caret line="31" column="48" selection-start-line="31" selection-start-column="48" selection-end-line="31" selection-end-column="48" />
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="Message.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/NewEngine/src/New/UserList/Message.java">
+        <entry file="file://$PROJECT_DIR$/NewEngine/src/UserList/Message.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="442">
-              <caret line="26" column="5" lean-forward="true" selection-start-line="26" selection-start-column="5" selection-end-line="26" selection-end-column="5" />
+              <caret line="26" column="5" selection-start-line="26" selection-start-column="5" selection-end-line="26" selection-end-column="5" />
             </state>
           </provider>
         </entry>
@@ -77,7 +72,7 @@
         <entry file="file://$PROJECT_DIR$/Client/src/controllers/ErrorController.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="221">
-              <caret line="13" column="1" lean-forward="true" selection-start-line="13" selection-start-column="1" selection-end-line="13" selection-end-column="1" />
+              <caret line="13" column="1" selection-start-line="13" selection-start-column="1" selection-end-line="13" selection-end-column="1" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#208#209#0" expanded="true" />
@@ -184,9 +179,9 @@
         <option value="$PROJECT_DIR$/Client/src/controllers/ErrorController.java" />
         <option value="$PROJECT_DIR$/Client/src/Core/DataSaver.java" />
         <option value="$PROJECT_DIR$/Client/src/fxml/client.fxml" />
-        <option value="$PROJECT_DIR$/Client/src/controllers/CController.java" />
         <option value="$PROJECT_DIR$/NewEngine/src/New/UserList/Message.java" />
         <option value="$PROJECT_DIR$/Client/src/Core/Worker.java" />
+        <option value="$PROJECT_DIR$/Client/src/controllers/CController.java" />
       </list>
     </option>
   </component>
@@ -247,61 +242,12 @@
             </path>
             <path>
               <item name="ChatFX" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Engine" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ChatFX" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Engine" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ChatFX" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Engine" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="New" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ChatFX" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Engine" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="New" type="462c0819:PsiDirectoryNode" />
-              <item name="Connector" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ChatFX" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Engine" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="New" type="462c0819:PsiDirectoryNode" />
-              <item name="UserList" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ChatFX" type="b2602c69:ProjectViewProjectNode" />
               <item name="NewEngine" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="ChatFX" type="b2602c69:ProjectViewProjectNode" />
               <item name="NewEngine" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ChatFX" type="b2602c69:ProjectViewProjectNode" />
-              <item name="NewEngine" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="New" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ChatFX" type="b2602c69:ProjectViewProjectNode" />
-              <item name="NewEngine" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="New" type="462c0819:PsiDirectoryNode" />
-              <item name="Connector" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ChatFX" type="b2602c69:ProjectViewProjectNode" />
-              <item name="NewEngine" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="New" type="462c0819:PsiDirectoryNode" />
-              <item name="UserList" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="ChatFX" type="b2602c69:ProjectViewProjectNode" />
@@ -499,7 +445,14 @@
       <option name="project" value="LOCAL" />
       <updated>1545315923112</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Работаю над сохранением настроек клиента">
+      <created>1545397001035</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1545397001035</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -515,14 +468,14 @@
       <window_info id="Image Layers" order="2" />
       <window_info anchor="right" id="Capture Analysis" order="5" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
-      <window_info anchor="right" x="0" y="0" width="434" height="856" id="Documentation" order="9" sideWeight="0.503268" side_tool="true" weight="0.18230277" />
+      <window_info anchor="right" x="0" y="0" width="434" height="856" id="Documentation" order="9" sideWeight="0.503268" side_tool="true" visible="true" weight="0.18230277" />
       <window_info anchor="right" id="Maven Projects" order="6" />
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.329849" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.3261339" />
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="2" />
-      <window_info content_ui="combo" id="Project" order="0" weight="0.26332623" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.26332623" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" sideWeight="0.49673203" weight="0.18230277" />
       <window_info anchor="bottom" id="ANTLR Preview" order="7" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -587,19 +540,20 @@
     <MESSAGE value="Исправлены баги в архитектуре ядра, работаю над сохранением профиля в клиенте" />
     <MESSAGE value="Добавил комментарии к классам. Сам уже начал путаться в их назначениях..." />
     <MESSAGE value="Работает над сохранением настроек" />
-    <option name="LAST_COMMIT_MESSAGE" value="Работает над сохранением настроек" />
+    <MESSAGE value="Работаю над сохранением настроек клиента" />
+    <option name="LAST_COMMIT_MESSAGE" value="Работаю над сохранением настроек клиента" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/NewEngine/src/New/Connector/StreamReader.java</url>
+          <url>file://$PROJECT_DIR$/NewEngine/src/Connector/StreamReader.java</url>
           <line>39</line>
           <properties />
           <option name="timeStamp" value="28" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/NewEngine/src/New/Connector/StreamReader.java</url>
+          <url>file://$PROJECT_DIR$/NewEngine/src/Connector/StreamReader.java</url>
           <line>28</line>
           <properties />
           <option name="timeStamp" value="29" />
@@ -682,8 +636,8 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/NewEngine/src/New/UserList/User.java" />
-    <entry file="file://$PROJECT_DIR$/NewEngine/src/New/UserList/MsgType.java" />
+    <entry file="file://$PROJECT_DIR$/NewEngine/src/UserList/User.java" />
+    <entry file="file://$PROJECT_DIR$/NewEngine/src/UserList/MsgType.java" />
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_172/src.zip!/java/io/ObjectInput.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="836">
@@ -691,7 +645,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/NewEngine/src/New/UserList/Message.java" />
+    <entry file="file://$PROJECT_DIR$/NewEngine/src/UserList/Message.java" />
     <entry file="file://$PROJECT_DIR$/Engine/src/NewConnector/NewTCPConnectionListener.java" />
     <entry file="file://$PROJECT_DIR$/Engine/src/NewConnector/NewStreamReader.java" />
     <entry file="file://$PROJECT_DIR$/Engine/src/NewConnector/NewTCPConnection.java" />
@@ -732,7 +686,7 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Client/src/sample/MassageManager.java" />
-    <entry file="file://$PROJECT_DIR$/NewEngine/src/New/Connector/TCPConnectionListener.java" />
+    <entry file="file://$PROJECT_DIR$/NewEngine/src/Connector/TCPConnectionListener.java" />
     <entry file="file://$PROJECT_DIR$/Server/src/sample/дд.java" />
     <entry file="file://$PROJECT_DIR$/Server/src/sample/csssdsd.java" />
     <entry file="file://$PROJECT_DIR$/Server/src/sample/ConnectionListManager.java" />
@@ -828,7 +782,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/NewEngine/src/New/UserList/User.java">
+    <entry file="file://$PROJECT_DIR$/NewEngine/src/UserList/User.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
           <caret line="10" column="61" lean-forward="true" selection-start-line="10" selection-start-column="61" selection-end-line="10" selection-end-column="61" />
@@ -852,7 +806,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/NewEngine/src/New/UserList/MsgType.java">
+    <entry file="file://$PROJECT_DIR$/NewEngine/src/UserList/MsgType.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="51">
           <caret line="3" column="10" selection-start-line="3" selection-start-column="10" selection-end-line="3" selection-end-column="10" />
@@ -872,14 +826,14 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/NewEngine/src/New/Connector/TCPConnection.java">
+    <entry file="file://$PROJECT_DIR$/NewEngine/src/Connector/TCPConnection.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1156">
           <caret line="71" selection-start-line="71" selection-end-line="71" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/NewEngine/src/New/Connector/StreamReader.java">
+    <entry file="file://$PROJECT_DIR$/NewEngine/src/Connector/StreamReader.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="377">
           <caret line="34" column="116" lean-forward="true" selection-start-line="34" selection-start-column="94" selection-end-line="34" selection-end-column="116" />
@@ -962,7 +916,7 @@
     <entry file="file://$PROJECT_DIR$/Client/src/controllers/ErrorController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="221">
-          <caret line="13" column="1" lean-forward="true" selection-start-line="13" selection-start-column="1" selection-end-line="13" selection-end-column="1" />
+          <caret line="13" column="1" selection-start-line="13" selection-start-column="1" selection-end-line="13" selection-end-column="1" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#208#209#0" expanded="true" />
@@ -1004,10 +958,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/NewEngine/src/New/UserList/Message.java">
+    <entry file="file://$PROJECT_DIR$/NewEngine/src/UserList/Message.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="442">
-          <caret line="26" column="5" lean-forward="true" selection-start-line="26" selection-start-column="5" selection-end-line="26" selection-end-column="5" />
+          <caret line="26" column="5" selection-start-line="26" selection-start-column="5" selection-end-line="26" selection-end-column="5" />
         </state>
       </provider>
     </entry>
@@ -1019,10 +973,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Client/src/Core/Worker.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="31" column="48" selection-start-line="31" selection-start-column="48" selection-end-line="31" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Client/src/controllers/CController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="409">
-          <caret line="64" column="59" selection-start-line="64" selection-start-column="59" selection-end-line="64" selection-end-column="59" />
+        <state relative-caret-position="1054">
+          <caret line="62" column="59" selection-start-line="62" selection-start-column="59" selection-end-line="62" selection-end-column="59" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#1541#1542#0" expanded="true" />
@@ -1038,13 +999,6 @@
             <element signature="e#4968#4969#0" expanded="true" />
             <element signature="e#5018#5019#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Client/src/Core/Worker.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="25" lean-forward="true" selection-start-line="25" selection-end-line="25" />
         </state>
       </provider>
     </entry>
