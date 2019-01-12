@@ -12,5 +12,5 @@ public interface WorkerListener {
 
     void onDisconnection();
 
-    void signIn(boolean answer);
+    void onSigned();
 }

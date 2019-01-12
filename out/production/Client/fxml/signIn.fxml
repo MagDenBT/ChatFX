@@ -47,15 +47,7 @@
                   <Insets bottom="40.0" />
                </VBox.margin>
             </TextField>
-            <TextField fx:id="tfSex" layoutX="349.0" layoutY="85.0">
-               <opaqueInsets>
-                  <Insets />
-               </opaqueInsets>
-               <VBox.margin>
-                  <Insets bottom="40.0" />
-               </VBox.margin>
-            </TextField>
-            <TextField layoutX="349.0" layoutY="129.0">
+            <TextField fx:id="tfSex" layoutX="349.0" layoutY="129.0">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
@@ -101,22 +93,22 @@
                   <Insets bottom="40.0" />
                </VBox.margin>
             </Label>
-            <Label layoutX="289.0" layoutY="122.0" prefHeight="29.0" prefWidth="91.0" text="Фото">
-               <VBox.margin>
-                  <Insets bottom="40.0" />
-               </VBox.margin>
-            </Label>
          </children>
       </VBox>
-      <ImageView fx:id="iSave" fitHeight="36.0" fitWidth="33.0" layoutX="524.0" layoutY="330.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="iSave" fitHeight="36.0" fitWidth="33.0" layoutX="284.0" layoutY="353.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../Assets/save.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="iRestore" fitHeight="45.0" fitWidth="40.0" layoutX="460.0" layoutY="327.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="iPhoto" fitHeight="138.0" fitWidth="181.0" layoutX="370.0" layoutY="148.0" pickOnBounds="true" preserveRatio="true" smooth="false">
          <image>
-            <Image url="@../Assets/open-folder.png" />
+            <Image url="@../Assets/emptyPhoto.png" />
          </image>
       </ImageView>
+      <TextField fx:id="tfPath" layoutX="305.0" layoutY="294.0" onAction="#selectPhoto" prefHeight="29.0" prefWidth="268.0" promptText="Выбрать фото">
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </TextField>
    </children>
 </AnchorPane>

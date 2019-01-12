@@ -2,6 +2,7 @@ package controllers;
 
 
 import Core.DataSaver;
+import Core.DataSaverListner;
 import Core.Worker;
 import Core.WorkerListener;
 import UserList.User;
@@ -11,20 +12,24 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import sample.*;
 import javafx.scene.image.ImageView;
 
 
 
 import java.io.IOException;
 
+/**
+ * Главное окно, где, собсвтенно и есть чат. Запускает 2 спутника в отдельных потоках, являясь их слушателем:
+ * Worker - отвечает за работу с сервером
+ * DataSaver - отвечает за сохранения и восстановление данных
+ *
+ */
 
-public class CController implements WorkerListener {
+public class CController implements WorkerListener,DataSaverListner {
 
     @FXML
     private Label lFirstLastName;
@@ -47,34 +52,56 @@ public class CController implements WorkerListener {
 
     private final String HOST = "127.0.0.1";
     private final int PORT = 8199;
+    private final String profilFileName = "pr";
     private Worker worker;
     private DataSaver dataSaver;
 
-    private User user;
+
+
     @FXML
     public void initialize() {
-
-        if(!initDataSaver()) {
-            user = dataSaver.getUser();
-            toAuthOnServer();
-            setProfilLabels(user);
-        }
-
-        new Thread(() -> worker = new Worker(CController.this)).start();
+        new Thread(()-> worker = new Worker(CController.this, HOST,  PORT)).start();
+        dataSaver = new DataSaver(this);//Инициализация Сохраняльщика
+        iSettings.addEventHandler(MouseEvent.MOUSE_CLICKED, (event)-> openProfilWindow());
+        new Thread(()->{
+            try {
+                Thread.sleep(300);
+                dataSaver.restoreProfil();
+//                if(dataSaver.isProfilRestored()){
+//                    worker.AuthOnServer(dataSaver.getUser());
+//                }
+            } catch (InterruptedException e) {
+                e.getMessage();
+            } catch (IOException e) {
+                e.getMessage();
+            } catch (ClassNotFoundException e) {
+                e.getMessage();
+            }
+        }).start();
     }
 
+    /**
+     * Отображение данных о пользователе
+     * @param user
+     */
     private void setProfilLabels(User user) {
         if (user != null) {
             iAvatar.setImage(user.getPhoto());
             lFirstLastName.setText(user.getFirstName() + " " +  user.getLastName());
-            lFirstLastName.setTextFill(new Color(91,181f,245,0.2));
         }
     }
+
 
     public void clickOnProfilGroup(MouseEvent mouseEvent) {
         openProfilWindow();
     }
+/*
+Генераторы окон/////////
+ */
 
+    /**
+     * Открытие окна с с настройками профиля
+     */
     private void openProfilWindow(){
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("../fxml/signIn.fxml"));
@@ -85,65 +112,71 @@ public class CController implements WorkerListener {
             stage.initModality(Modality.WINDOW_MODAL);
             SignInController signInController = loader.getController();
             signInController.setDataSaver(dataSaver);
+            signInController.setUser();
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    private void toAuthOnServer(){
-        new Thread(()->{
-            worker.startConnection(HOST,PORT,user.getLogin(), user.getPassword());
-        }).start();
-    }
-
-    public void sendMsg() {
-        String msg = tfInput.getText();
-        if (!msg.equals(""))
-                if(worker.sendTextMsg(null,msg))
-                     tfInput.clear();
-    }
-
-    private boolean initDataSaver(){
+    /**
+     * Окно "Error"
+     * @param errorText
+     */
+    private synchronized void createErrorWindow(String errorText) {
         try {
-            dataSaver = new DataSaver();
-            return true;
-        } catch (IOException e) {
-            createErrorWindow(e.getMessage());
-            return false;
-        } catch (ClassNotFoundException e) {
-            createErrorWindow(e.getMessage());
-            return false;
-        }
-
-    }
-
-    private void createErrorWindow(String errorText) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("fxml/Error.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../fxml/Error.fxml"));
             loader.load();
             Parent root = loader.getRoot();
             Stage stage = new Stage();
             stage.setTitle("Error");
             stage.setScene(new Scene(root));
-            stage.initModality(Modality.WINDOW_MODAL);
             stage.initOwner(taLog.getScene().getWindow());
+            stage.initModality(Modality.WINDOW_MODAL);
             ((ErrorController) loader.getController()).setlErrorText(errorText);
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-    public void initializeUserList() {
-        cUsers.setCellValueFactory(new PropertyValueFactory<WrapperUser, String>("firstLastName"));
-        usersList.setItems(FriendsManager.getUsersList());
+/*
+/////////Генераторы окон
+ */
+
+    /**
+     * Отправка текстового сообщения с поля набора текста на сервер
+     */
+    public void sendMsg() {
+        String text = tfInput.getText();
+        if (!text.equals(""))
+                if(worker.sendTextMsg(text))
+                     tfInput.clear();
     }
 
+
+
+//    public void initializeUserList() {
+//        cUsers.setCellValueFactory(new PropertyValueFactory<WrapperUser, String>("firstLastName"));
+//        usersList.setItems(FriendsManager.getUsersList());
+//    }
+
+    /**
+     * Запись пришедшего сообщения в поле в чат
+     * т.к. этот контроллер - слушатель воркера, который работает в обдельном потоке
+     * поэтому запись пришедшего сообщения реализавана через Platform.runLater.
+     * P.S. Особенность работы потоков с GUI
+     * @param msg
+     */
     private void writeTaLog(String msg) {
         Platform.runLater(()-> taLog.appendText(msg + "\n"));
 
     }
 
+    /**
+     * Отоброжалка статуса соединения
+     * @param value
+     * @param color
+     */
     private void lConnectionStatusChanger(String value, Color color) {
         Platform.runLater(() -> {
             lConnectionStatus.setText(value);
@@ -152,7 +185,14 @@ public class CController implements WorkerListener {
     }
 
 
+    /*
+    блок кода отвечающего за слушание событий с Worker ////////////////
+     */
 
+    /**
+     * Воркер кидает сюда пользовательское сообщение от сервера
+     * @param msg
+     */
     @Override
     public void gotTextMsg(String msg) {
         writeTaLog(msg);
@@ -179,11 +219,54 @@ public class CController implements WorkerListener {
         lConnectionStatusChanger("Оффлайн",Color.RED);
     }
 
+    /**
+     * Вызывается из воркера если авторизация на сервере пройдена
+     */
     @Override
-    public void signIn(boolean answer) {
+    public void onSigned() {
         lConnectionStatusChanger("В сети", Color.GREEN);
     }
 
+/*
+//////////////// блок кода отвечающего за слушание событий с Worker
+ */
 
+    /*
+    блок кода отвечающего за слушание событий с DataSaver ////////////////
+     */
+
+//    /**
+//     * Получение инфы о пользовтеле после прочтения данных профиля
+//     * и запуск авторизации на сервере
+//     * @param user
+//     */
+//    @Override
+//    public void restoredUser(User user) {
+//        this.user = user;
+//        worker.AuthOnServer(this.user);
+//        setProfilLabels(this.user);
+//    }
+
+    /**
+     * Ловим ошибку и передаем ее в генератор окна для отображения
+     * @param message
+     */
+    @Override
+    public void onException(String message) {
+        createErrorWindow(message);
+    }
+
+    /**
+     * Обновление инфы о пользовтеле в окне и на сервере после сохранения данных профиля
+     */
+    @Override
+    public void ProfilUpdated() {
+        worker.updateUserAtServer(dataSaver.getUser());
+        setProfilLabels(dataSaver.getUser());
+    }
+
+      /*
+    //////////////// блок кода отвечающего за слушание событий с DataSaver
+     */
 
 }

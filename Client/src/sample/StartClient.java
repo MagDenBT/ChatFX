@@ -18,11 +18,6 @@ public class StartClient  extends Application {
         primaryStage.setScene(scene);
         primaryStage.setTitle("Балона ВЗОРВАЛАСЬ");
         primaryStage.show();
-        CController controller = loader.getController();
-
-
-
-       // controller.initializeUserList();
     }
 
 

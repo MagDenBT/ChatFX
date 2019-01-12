@@ -5,6 +5,7 @@ import UserList.Message;
 import java.io.*;
 import java.net.Socket;
 
+
 public class TCPConnection {
 
     private Socket socket;
@@ -17,16 +18,24 @@ public class TCPConnection {
     protected volatile int countOfTryAuthor;
     private volatile String login;
 
+    /**
+     * Конструктор для клиента, в котором "тяжелая" часть инициализации происходит в отдельном потоке,
+     * чтобы UI не ждал потднятия соединения
+     * @param IP
+     * @param port
+     * @param listener
+     */
     public TCPConnection(String IP, int port, TCPConnectionListener listener) {
         this.listener = listener;
-        try {
-            this.socket = new Socket(IP, port);
-            timeOfStartConnection = System.currentTimeMillis();
-            initialization();
-        } catch (IOException e) {
-            listener.connectionException(this,e);
-        }
-
+       new Thread(()-> {
+           try {
+               this.socket = new Socket(IP, port);
+               timeOfStartConnection = System.currentTimeMillis();
+               initialization();
+           } catch (IOException e) {
+               listener.connectionException(this, e);
+           }
+       }).start();
 
     }
 
