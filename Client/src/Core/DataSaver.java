@@ -55,20 +55,36 @@ public class DataSaver {
     }
 
     public synchronized void saveProfil() throws IOException {
+        File path = new File(dataPath + "//" + profilPath);
+        boolean created = false;
+        if(!path.exists()) {
+             created =  path.mkdirs();
+        }
         Image prImage = user.getPhoto();
         if (prImage != null) {
-            String fileName = user.getPhotoFileName();
-            String extention = fileName.substring(fileName.lastIndexOf('.')+1);
-            File imageFile = new File(dataPath + "\\" + profilPath + "\\" + fileName);
+            String namePhoto = user.getPhotoFileName();
+            String extention = namePhoto.substring(namePhoto.lastIndexOf('.')+1);
+            File imageFile = new File(path,namePhoto);
+            if(!imageFile.exists()){
+                imageFile.createNewFile();
+
+            }
             BufferedImage rIm = SwingFXUtils.fromFXImage(prImage,null );
             ImageIO.write(rIm, extention, imageFile);
         }
         try {
-            ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream(profilFileName));
-            objectOutputStream.writeObject(user);
-            objectOutputStream.flush();
-            objectOutputStream.close();
-            listner.ProfilUpdated();
+            File profilFile = new File(path, profilFileName);
+            if(!profilFile.exists()){
+                profilFile.createNewFile();
+            }
+            if(!profilFile.exists()) profilFile.createNewFile();
+            if(profilFile.canWrite()) {
+                ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream(profilFileName));
+                objectOutputStream.writeObject(user);
+                objectOutputStream.flush();
+                objectOutputStream.close();
+                listner.ProfilUpdated();
+            }else System.out.println("Не могу записать файл с профилем");
         } catch (IOException e) {
             listner.onException(e.getMessage());
         }
