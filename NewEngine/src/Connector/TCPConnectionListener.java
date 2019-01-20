@@ -10,7 +10,7 @@ public interface TCPConnectionListener {
 
     void onRecieveMessage(TCPConnection tcpConnection, Message msg);
 
-    boolean onAuthorization(TCPConnection tcpConnection, Message msg);
+    boolean onAuthentication(TCPConnection tcpConnection, Message msg);
 
     void connectionException(Exception e);
 

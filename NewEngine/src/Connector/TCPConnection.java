@@ -13,9 +13,9 @@ public class TCPConnection {
     private ObjectInputStream in ;
     private ObjectOutputStream out;
     private StreamReader streamReader;
-    protected volatile boolean isAuthorizated = false;
+    protected volatile boolean authenticated = false;
     private volatile long timeOfStartConnection;
-    protected volatile int countOfTryAuthor;
+    protected volatile int authenticationAttempts;
     private volatile String login;
 
     /**
@@ -64,7 +64,6 @@ public class TCPConnection {
 
     public synchronized void closeConnection() {
         try {
-            String test;
             streamReader.stop();
             in.close();
             out.close();
@@ -76,7 +75,6 @@ public class TCPConnection {
     }
 
     public boolean sendMessage(Message msg) {
-
         try {
             out.writeObject(msg);
             out.flush();
@@ -84,8 +82,6 @@ public class TCPConnection {
         } catch (IOException e) {
             return false;
         }
-
-
     }
 
     public Socket getSocket() {
@@ -97,16 +93,12 @@ public class TCPConnection {
     }
 
 
-    public int getCountOfTryAuthor() {
-        return countOfTryAuthor;
+    public int getAuthenticationAttempts() {
+        return authenticationAttempts;
     }
 
-    public synchronized boolean isAuthorizated() {
-        return isAuthorizated;
-    }
-
-    public void setCountOfTryAuthor(int countOfTryAuthor) {
-        this.countOfTryAuthor = countOfTryAuthor;
+    public void setAuthenticationAttempts(int count) {
+        this.authenticationAttempts = count;
     }
 
     public synchronized String getLogin() {

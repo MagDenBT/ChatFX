@@ -8,7 +8,7 @@ public class ErrorController {
     @FXML
     private Label lErrorText;
 
-    public void setlErrorText(String errorText) {
+    public void setLErrorText(String errorText) {
         lErrorText.setText(errorText);
     }
 }

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
@@ -105,10 +106,6 @@
             <Image url="@../Assets/emptyPhoto.png" />
          </image>
       </ImageView>
-      <TextField fx:id="tfPath" layoutX="305.0" layoutY="294.0" onAction="#selectPhoto" prefHeight="29.0" prefWidth="268.0" promptText="Выбрать фото">
-         <opaqueInsets>
-            <Insets />
-         </opaqueInsets>
-      </TextField>
+      <Button layoutX="390.0" layoutY="294.0" mnemonicParsing="false" onAction="#deletePhoto" text="Удалить фото" />
    </children>
 </AnchorPane>

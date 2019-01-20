@@ -26,7 +26,7 @@
          <children>
             <TextArea fx:id="taLog" editable="false" layoutX="290.0" layoutY="44.0" prefHeight="433.0" prefWidth="482.0" />
             <TextField fx:id="tfInput" layoutX="290.0" layoutY="482.0" onAction="#sendMsg" prefHeight="71.0" prefWidth="291.0" promptText="Написать сообщение..." />
-            <Label fx:id="lConnectionStatus" layoutX="622.0" layoutY="8.0" prefHeight="27.0" prefWidth="164.0" text="Оффлайн" textAlignment="CENTER" textFill="#f50707">
+            <Label fx:id="lConnectionStatus" layoutX="622.0" layoutY="8.0" onMouseReleased="#reconnect" prefHeight="27.0" prefWidth="164.0" text="Оффлайн" textAlignment="CENTER" textFill="#f50707">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
@@ -47,11 +47,7 @@
             <Group fx:id="gProfilGroup" onMousePressed="#clickOnProfilGroup">
                <children>
                   <Label fx:id="lFirstLastName" layoutX="332.0" layoutY="2.0" prefHeight="38.0" prefWidth="181.0" text="Нет профиля" textFill="#cf3a3ad0" />
-                  <ImageView fx:id="iAvatar" fitHeight="36.0" fitWidth="37.0" layoutX="290.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../Assets/emptyPhoto.png" />
-                     </image>
-                  </ImageView>
+                  <ImageView fx:id="iAvatar" fitHeight="36.0" fitWidth="37.0" layoutX="290.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true" />
                </children>
             </Group>
          </children>

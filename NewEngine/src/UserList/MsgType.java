@@ -6,5 +6,5 @@ package UserList;
  */
 public enum MsgType {
 
-    isAuth, isUserUpdate, isTextMsg,
+    authentication, userUpdate, textMsg,
 }

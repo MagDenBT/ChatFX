@@ -56,11 +56,11 @@ public class Worker implements TCPConnectionListener {
         return sendMsg(new Message(text));
     }
 
-    public boolean AuthOnServer(User user) {
-        return sendMsg(new Message(user,MsgType.isAuth));
+    public boolean sendAuthentication(User user) {
+        return sendMsg(new Message(user,MsgType.authentication));
     }
     public boolean updateUserAtServer(User user) {
-        return sendMsg(new Message(user,MsgType.isUserUpdate));
+        return sendMsg(new Message(user,MsgType.userUpdate));
     }
   /*
 Блок кода передающий сообщения на сервер //////
@@ -87,8 +87,8 @@ public class Worker implements TCPConnectionListener {
     @Override
     public void onRecieveMessage(TCPConnection tcpConnection, Message msg) {
         switch (msg.getType()) {
-            case isAuth:
-            case isTextMsg:
+            case authentication:
+            case textMsg:
                 workerListener.gotTextMsg(msg.getUser().getLogin() + ": " + msg.getTextMsg());
                 break;
         }
@@ -104,9 +104,9 @@ public class Worker implements TCPConnectionListener {
      * @return
      */
     @Override
-    public synchronized boolean onAuthorization(TCPConnection tcpConnection, Message msg) {
-       if (msg.isSignIn()) workerListener.onSigned();
-        return msg.isSignIn();
+    public synchronized boolean onAuthentication(TCPConnection tcpConnection, Message msg) {
+        workerListener.onSigned(msg);
+        return msg.authenticated();
     }
 
     /**

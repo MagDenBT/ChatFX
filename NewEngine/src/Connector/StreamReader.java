@@ -36,11 +36,17 @@ class StreamReader {
                 }finally {
                     if (msg != null) {
                         switch (msg.getType()) {
-                            case isTextMsg:
+                            case textMsg:
                                 listener.onRecieveMessage(tcpConnection, msg);
                                 break;
-                            case isAuth:
-                                tcpConnection.isAuthorizated = listener.onAuthorization(tcpConnection, msg);
+                            case authentication:
+                                tcpConnection.authenticated =listener.onAuthentication(tcpConnection, msg);
+                                break;
+                            case userUpdate:
+                                ///
+                                break;
+                             default:///
+                                 break;
 
                         }
                     }

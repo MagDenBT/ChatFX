@@ -1,5 +1,7 @@
 package Core;
 
+import UserList.Message;
+
 public interface WorkerListener {
 
     void gotTextMsg(String msg);
@@ -12,5 +14,5 @@ public interface WorkerListener {
 
     void onDisconnection();
 
-    void onSigned();
+    void onSigned(Message msg);
 }

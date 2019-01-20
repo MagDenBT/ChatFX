@@ -3,6 +3,7 @@ package sample;
 import UserList.Message;
 import Connector.TCPConnection;
 import Connector.TCPConnectionListener;
+import UserList.MsgType;
 import UserList.User;
 
 import java.io.IOException;
@@ -16,8 +17,8 @@ public class ServerWorker implements TCPConnectionListener {
 
     private int port;
     private ServerSocket serverSocket;
-    private HashMap<String, TCPConnection> authorizedConnections;
-    private volatile ArrayList<TCPConnection> unAuthorizedConnections;
+    private HashMap<String, TCPConnection> authenticatedConnections;
+    private volatile ArrayList<TCPConnection> unAuthenticatedConnections;
     private ServerWorkerListener serverWorkerListener;
     private volatile boolean isRun;
     private final ConnectionsInspector connectionInspector;
@@ -25,8 +26,8 @@ public class ServerWorker implements TCPConnectionListener {
 
 
     public ServerWorker(int port, long maxTimeUnAuthorized, long conInspectionTime, int maxCountFailedAuthor, ServerWorkerListener serverWorkerListener) {
-        unAuthorizedConnections = new ArrayList();
-        authorizedConnections = new HashMap();
+        unAuthenticatedConnections = new ArrayList();
+        authenticatedConnections = new HashMap();
         this.port = port;
         this.serverWorkerListener = serverWorkerListener;
         connectionInspector = new ConnectionsInspector(this, maxCountFailedAuthor, conInspectionTime, maxTimeUnAuthorized );
@@ -52,55 +53,73 @@ public class ServerWorker implements TCPConnectionListener {
         rxThread.start();
     }
 
-    public synchronized ArrayList<TCPConnection> getUnAuthorizedConnections() {
-        return unAuthorizedConnections;
+    public synchronized ArrayList<TCPConnection> getUnAuthenticatedConnections() {
+        return unAuthenticatedConnections;
     }
 
     @Override
     public synchronized void onConnection(TCPConnection tcpConnection) {
-        getUnAuthorizedConnections().add(tcpConnection);
+        getUnAuthenticatedConnections().add(tcpConnection);
     }
 
     @Override
     public synchronized void onDisconnection(TCPConnection tcpConnection) {
-        if (authorizedConnections.containsValue(tcpConnection)){
-            Collection<TCPConnection>  col =authorizedConnections.values();
+        if (authenticatedConnections.containsValue(tcpConnection)){
+            Collection<TCPConnection>  col = authenticatedConnections.values();
             col.remove(tcpConnection);
         }
-        else getUnAuthorizedConnections().remove(tcpConnection);
+        else getUnAuthenticatedConnections().remove(tcpConnection);
 
     }
 
     @Override
     public synchronized void onRecieveMessage(TCPConnection tcpConnection, Message msg) {
         msg.setUser(new User(tcpConnection.getLogin()));
-        for (Map.Entry<String, TCPConnection> entry :authorizedConnections.entrySet()) {
+        for (Map.Entry<String, TCPConnection> entry : authenticatedConnections.entrySet()) {
             TCPConnection con = entry.getValue();
-            if(!con.equals(tcpConnection))
+           // if(!con.equals(tcpConnection))
                 con.sendMessage(msg);
         }
     }
 
     @Override
-    public synchronized boolean onAuthorization(TCPConnection tcpConnection, Message msg) {
+    public synchronized boolean onAuthentication(TCPConnection tcpConnection, Message msg) {
         String loginInBase = "testLogin";
         String passwordInBase = "testPassword";
         String firstLastNameInBase = "ИмяФамилияТест";
         String login = msg.getUser().getLogin();
         String password = msg.getUser().getPassword();
-
+        boolean authenticated;
         if(login.equals(loginInBase) && password.equals(passwordInBase)){
-            getUnAuthorizedConnections().remove(tcpConnection);
-            authorizedConnections.put(loginInBase, tcpConnection);
+            getUnAuthenticatedConnections().remove(tcpConnection);
+            checkOfTallyConnection(loginInBase);
+            authenticatedConnections.put(loginInBase, tcpConnection);
             tcpConnection.setLogin(loginInBase);
-            tcpConnection.setCountOfTryAuthor(0);
-            return true;
+            tcpConnection.setAuthenticationAttempts(0);
+            authenticated = true;
         }else {
-            int countFailedAuthor = tcpConnection.getCountOfTryAuthor();
-            tcpConnection.setCountOfTryAuthor(++countFailedAuthor);
-            connectionInspector.conncetionDestructor(tcpConnection, countFailedAuthor);
-            return false;
+            int countFailedAuthor = tcpConnection.getAuthenticationAttempts();
+            tcpConnection.setAuthenticationAttempts(++countFailedAuthor);
+            connectionInspector.connectionDestructor(tcpConnection, countFailedAuthor);
+            authenticated = false;
         }
+        authAnswer(tcpConnection, authenticated);
+        return authenticated;
+    }
+
+    private synchronized void checkOfTallyConnection(String loginInBase) {
+        TCPConnection connection = authenticatedConnections.get(loginInBase);
+        if (connection != null) {
+            connection.closeConnection();
+        }
+    }
+
+    private void authAnswer(TCPConnection tcpConnection, boolean authenticated) {
+        User user = new User(tcpConnection.getLogin());
+        Message msg = new Message(user, MsgType.authentication);
+        msg.authenticated(authenticated);
+        //Здесь надо реализвать запаковку в Message причины фейла авторизации, если она есть
+        tcpConnection.sendMessage(msg);
     }
 
     @Override

@@ -14,11 +14,11 @@ public class Message implements Serializable {
     private MsgType type;
     private User user;
     private String textMsg;
-    private boolean signIn;
+    private boolean authenticated;
     private String signUp;
 
     public Message(String textMsg) {
-        type = MsgType.isTextMsg;
+        type = MsgType.textMsg;
         this.textMsg = textMsg;
     }
 
@@ -39,12 +39,12 @@ public class Message implements Serializable {
         return textMsg;
     }
 
-    public boolean isSignIn() {
-        return signIn;
+    public boolean authenticated() {
+        return authenticated;
     }
 
-    public void setSignIn(boolean signIn) {
-        this.signIn = signIn;
+    public void authenticated(boolean authenticated) {
+        this.authenticated = authenticated;
     }
 
     public void setUser(User user) {

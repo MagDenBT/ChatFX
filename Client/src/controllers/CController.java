@@ -5,6 +5,7 @@ import Core.DataSaver;
 import Core.DataSaverListner;
 import Core.Worker;
 import Core.WorkerListener;
+import UserList.Message;
 import UserList.User;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
@@ -19,17 +20,15 @@ import javafx.stage.Stage;
 import javafx.scene.image.ImageView;
 
 
-
 import java.io.IOException;
 
 /**
  * Главное окно, где, собсвтенно и есть чат. Запускает 2 спутника в отдельных потоках, являясь их слушателем:
  * Worker - отвечает за работу с сервером
  * DataSaver - отвечает за сохранения и восстановление данных
- *
  */
 
-public class CController implements WorkerListener,DataSaverListner {
+public class CController implements WorkerListener, DataSaverListner {
 
     @FXML
     private Label lFirstLastName;
@@ -57,19 +56,15 @@ public class CController implements WorkerListener,DataSaverListner {
     private DataSaver dataSaver;
 
 
-
     @FXML
     public void initialize() {
-        new Thread(()-> worker = new Worker(CController.this, HOST,  PORT)).start();
+        new Thread(() -> worker = new Worker(CController.this, HOST, PORT)).start();
         dataSaver = new DataSaver(this);//Инициализация Сохраняльщика
-        iSettings.addEventHandler(MouseEvent.MOUSE_CLICKED, (event)-> openProfilWindow());
-        new Thread(()->{
+        iSettings.addEventHandler(MouseEvent.MOUSE_CLICKED, (event) -> openProfilWindow());
+        new Thread(() -> {
             try {
                 Thread.sleep(300);
-                dataSaver.restoreProfil();
-//                if(dataSaver.isProfilRestored()){
-//                    worker.AuthOnServer(dataSaver.getUser());
-//                }
+                dataSaver.restoreProfile();
             } catch (InterruptedException e) {
                 e.getMessage();
             } catch (IOException e) {
@@ -82,12 +77,13 @@ public class CController implements WorkerListener,DataSaverListner {
 
     /**
      * Отображение данных о пользователе
+     *
      * @param user
      */
     private void setProfilLabels(User user) {
         if (user != null) {
             iAvatar.setImage(user.getPhoto());
-            lFirstLastName.setText(user.getFirstName() + " " +  user.getLastName());
+            lFirstLastName.setText(user.getFirstName() + " " + user.getLastName());
         }
     }
 
@@ -102,7 +98,7 @@ public class CController implements WorkerListener,DataSaverListner {
     /**
      * Открытие окна с с настройками профиля
      */
-    private void openProfilWindow(){
+    private void openProfilWindow() {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("../fxml/signIn.fxml"));
             loader.load();
@@ -112,7 +108,7 @@ public class CController implements WorkerListener,DataSaverListner {
             stage.initModality(Modality.WINDOW_MODAL);
             SignInController signInController = loader.getController();
             signInController.setDataSaver(dataSaver);
-            signInController.setUser();
+            signInController.populateFields();
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();
@@ -121,6 +117,7 @@ public class CController implements WorkerListener,DataSaverListner {
 
     /**
      * Окно "Error"
+     *
      * @param errorText
      */
     private synchronized void createErrorWindow(String errorText) {
@@ -133,7 +130,7 @@ public class CController implements WorkerListener,DataSaverListner {
             stage.setScene(new Scene(root));
             stage.initOwner(taLog.getScene().getWindow());
             stage.initModality(Modality.WINDOW_MODAL);
-            ((ErrorController) loader.getController()).setlErrorText(errorText);
+            ((ErrorController) loader.getController()).setLErrorText(errorText);
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();
@@ -149,31 +146,26 @@ public class CController implements WorkerListener,DataSaverListner {
     public void sendMsg() {
         String text = tfInput.getText();
         if (!text.equals(""))
-                if(worker.sendTextMsg(text))
-                     tfInput.clear();
+            if (worker.sendTextMsg(text))
+                tfInput.clear();
     }
-
-
-
-//    public void initializeUserList() {
-//        cUsers.setCellValueFactory(new PropertyValueFactory<WrapperUser, String>("firstLastName"));
-//        usersList.setItems(FriendsManager.getUsersList());
-//    }
 
     /**
      * Запись пришедшего сообщения в поле в чат
      * т.к. этот контроллер - слушатель воркера, который работает в обдельном потоке
      * поэтому запись пришедшего сообщения реализавана через Platform.runLater.
      * P.S. Особенность работы потоков с GUI
+     *
      * @param msg
      */
     private void writeTaLog(String msg) {
-        Platform.runLater(()-> taLog.appendText(msg + "\n"));
+        Platform.runLater(() -> taLog.appendText(msg + "\n"));
 
     }
 
     /**
      * Отоброжалка статуса соединения
+     *
      * @param value
      * @param color
      */
@@ -191,6 +183,7 @@ public class CController implements WorkerListener,DataSaverListner {
 
     /**
      * Воркер кидает сюда пользовательское сообщение от сервера
+     *
      * @param msg
      */
     @Override
@@ -201,7 +194,7 @@ public class CController implements WorkerListener,DataSaverListner {
 
     @Override
     public void connectionException(Exception e) {
-        lConnectionStatusChanger("Сервер недоступен",Color.RED);
+        lConnectionStatusChanger("Сервер недоступен", Color.RED);
     }
 
     @Override
@@ -211,20 +204,24 @@ public class CController implements WorkerListener,DataSaverListner {
 
     @Override
     public void onConnection() {
-        lConnectionStatusChanger("Не авторизован", Color.YELLOW);
+        lConnectionStatusChanger("Не авторизован", Color.AQUA);
     }
 
     @Override
     public void onDisconnection() {
-        lConnectionStatusChanger("Оффлайн",Color.RED);
+        lConnectionStatusChanger("Оффлайн", Color.RED);
     }
 
     /**
      * Вызывается из воркера если авторизация на сервере пройдена
      */
     @Override
-    public void onSigned() {
-        lConnectionStatusChanger("В сети", Color.GREEN);
+    public void onSigned(Message msg) {
+        if (msg.authenticated())
+            lConnectionStatusChanger("В сети", Color.GREEN);
+        else {
+            lConnectionStatusChanger("Аутентификация провалилась", Color.DARKRED);
+        }
     }
 
 /*
@@ -235,20 +232,9 @@ public class CController implements WorkerListener,DataSaverListner {
     блок кода отвечающего за слушание событий с DataSaver ////////////////
      */
 
-//    /**
-//     * Получение инфы о пользовтеле после прочтения данных профиля
-//     * и запуск авторизации на сервере
-//     * @param user
-//     */
-//    @Override
-//    public void restoredUser(User user) {
-//        this.user = user;
-//        worker.AuthOnServer(this.user);
-//        setProfilLabels(this.user);
-//    }
-
     /**
      * Ловим ошибку и передаем ее в генератор окна для отображения
+     *
      * @param message
      */
     @Override
@@ -261,8 +247,14 @@ public class CController implements WorkerListener,DataSaverListner {
      */
     @Override
     public void ProfilUpdated() {
-        worker.updateUserAtServer(dataSaver.getUser());
+        worker.sendAuthentication(dataSaver.getUser());
         setProfilLabels(dataSaver.getUser());
+    }
+
+    public void reconnect(MouseEvent event) {
+        User user = dataSaver.getUser();
+        if(user!=null)
+            worker.sendAuthentication(dataSaver.getUser());
     }
 
       /*

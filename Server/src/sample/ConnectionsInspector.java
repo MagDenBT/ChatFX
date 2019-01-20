@@ -37,7 +37,7 @@ public class ConnectionsInspector {
 
     private void inspector(){
         long currentTime = System.currentTimeMillis();
-        ArrayList<TCPConnection> inspectedList = serverWorker.getUnAuthorizedConnections();
+        ArrayList<TCPConnection> inspectedList = serverWorker.getUnAuthenticatedConnections();
 
         for (int i = 0; i < inspectedList.size(); i++) {
             long liveTime = currentTime - inspectedList.get(i).getTimeOfStartConnection();
@@ -48,10 +48,10 @@ public class ConnectionsInspector {
         }
     }
 
-    public void conncetionDestructor(TCPConnection tcpConnection, int countFailedAuthor) {
+    public void connectionDestructor(TCPConnection tcpConnection, int countFailedAuthor) {
         if(countFailedAuthor >= maxCountFailedAuthor) {
             tcpConnection.closeConnection();
-            serverWorker.getUnAuthorizedConnections().remove(tcpConnection);
+            serverWorker.getUnAuthenticatedConnections().remove(tcpConnection);
         }
     }
 
