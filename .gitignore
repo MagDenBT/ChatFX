@@ -55,3 +55,6 @@ fabric.properties
  
 # Editor-based Rest Client
 .idea/httpRequests
+
+#Media files of Chat
+Media/*
