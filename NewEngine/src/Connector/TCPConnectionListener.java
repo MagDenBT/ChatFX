@@ -12,6 +12,8 @@ public interface TCPConnectionListener {
 
     boolean onAuthentication(TCPConnection tcpConnection, Message msg);
 
+    boolean onRegistration(TCPConnection tcpConnection, Message msg);
+
     void connectionException(Exception e);
 
     void connectionException(TCPConnection tcpConnection,Exception e);

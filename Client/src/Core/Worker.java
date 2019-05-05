@@ -109,6 +109,12 @@ public class Worker implements TCPConnectionListener {
         return msg.authenticated();
     }
 
+    @Override
+    public boolean onRegistration(TCPConnection tcpConnection, Message msg) {
+        workerListener.onRegistration(msg);
+        return msg.authenticated();
+    }
+
     /**
      * Ловит ошибку создания/закрытия соедиения
      * @param e

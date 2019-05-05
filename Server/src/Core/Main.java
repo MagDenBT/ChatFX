@@ -1,4 +1,4 @@
-package sample;
+package Core;
 
 import controllers.SController;
 import javafx.application.Application;

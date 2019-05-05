@@ -18,7 +18,7 @@ public class User implements Serializable {
     private String firstName;
     private String lastName;
     private int age;
-    private String sex;
+    private Sex sex;
     private transient Image photo;
     private String photoExtention;
 
@@ -38,11 +38,30 @@ public class User implements Serializable {
     }
 
     public String getPassword() {
+        if (password != null && password.contains(" ")) {
+            int length = password.length();
+            StringBuffer buff = new StringBuffer();
+            for (int i = 0; i < length; i++) {
+                char c = password.charAt(i);
+                if (c != ' ') {
+                    buff.append(c);
+                }
+                password = buff.toString();
+            }
+        }
         return password;
     }
 
     public void setPassword(String password) {
-        this.password = password;
+        int length = password.length();
+        StringBuffer buff = new StringBuffer();
+        for (int i = 0; i < length; i++) {
+            char c = password.charAt(i);
+            if (c != ' ') {
+                buff.append(c);
+            }
+        }
+        this.password = buff.toString();
     }
 
     public String getFirstName() {
@@ -69,11 +88,11 @@ public class User implements Serializable {
         this.age = age;
     }
 
-    public String getSex() {
+    public Sex getSex() {
         return sex;
     }
 
-    public void setSex(String sex) {
+    public void setSex(Sex sex) {
         this.sex = sex;
     }
 

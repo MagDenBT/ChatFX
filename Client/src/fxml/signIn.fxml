@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
@@ -9,7 +14,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.SignInController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.SignInController">
    <children>
       <VBox layoutX="108.0" layoutY="32.0" prefHeight="276.0" prefWidth="162.0">
          <children>
@@ -41,14 +46,6 @@
       <VBox layoutX="405.0" layoutY="32.0">
          <children>
             <TextField fx:id="tfAge" layoutX="348.0" layoutY="32.0">
-               <opaqueInsets>
-                  <Insets />
-               </opaqueInsets>
-               <VBox.margin>
-                  <Insets bottom="40.0" />
-               </VBox.margin>
-            </TextField>
-            <TextField fx:id="tfSex" layoutX="349.0" layoutY="129.0">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
@@ -89,11 +86,6 @@
                   <Insets bottom="40.0" />
                </VBox.margin>
             </Label>
-            <Label layoutX="289.0" layoutY="72.0" prefHeight="29.0" prefWidth="91.0" text="Пол">
-               <VBox.margin>
-                  <Insets bottom="40.0" />
-               </VBox.margin>
-            </Label>
          </children>
       </VBox>
       <ImageView fx:id="iSave" fitHeight="36.0" fitWidth="33.0" layoutX="284.0" layoutY="353.0" pickOnBounds="true" preserveRatio="true">
@@ -107,5 +99,6 @@
          </image>
       </ImageView>
       <Button layoutX="390.0" layoutY="294.0" mnemonicParsing="false" onAction="#deletePhoto" text="Удалить фото" />
+      <ComboBox fx:id="cbSex" editable="true" layoutX="405.0" layoutY="92.0" onAction="#setCBSex" prefHeight="39.0" prefWidth="213.0" promptText="Выберите пол" />
    </children>
 </AnchorPane>

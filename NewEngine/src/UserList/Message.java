@@ -54,4 +54,8 @@ public class Message implements Serializable {
     public String getSignUp() {
         return signUp;
     }
+
+    public void setTextMsg(String textMsg) {
+        textMsg = textMsg;
+    }
 }

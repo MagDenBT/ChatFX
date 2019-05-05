@@ -60,7 +60,7 @@ public class CController implements WorkerListener, DataSaverListner {
     public void initialize() {
         new Thread(() -> worker = new Worker(CController.this, HOST, PORT)).start();
         dataSaver = new DataSaver(this);//Инициализация Сохраняльщика
-        iSettings.addEventHandler(MouseEvent.MOUSE_CLICKED, (event) -> openProfilWindow());
+        iSettings.addEventHandler(MouseEvent.MOUSE_CLICKED, (event) -> openProfileWindow());
         new Thread(() -> {
             try {
                 Thread.sleep(300);
@@ -89,7 +89,7 @@ public class CController implements WorkerListener, DataSaverListner {
 
 
     public void clickOnProfilGroup(MouseEvent mouseEvent) {
-        openProfilWindow();
+        openProfileWindow();
     }
 /*
 Генераторы окон/////////
@@ -98,7 +98,7 @@ public class CController implements WorkerListener, DataSaverListner {
     /**
      * Открытие окна с с настройками профиля
      */
-    private void openProfilWindow() {
+    private void openProfileWindow() {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("../fxml/signIn.fxml"));
             loader.load();
@@ -222,6 +222,11 @@ public class CController implements WorkerListener, DataSaverListner {
         else {
             lConnectionStatusChanger("Аутентификация провалилась", Color.DARKRED);
         }
+    }
+
+    @Override
+    public void onRegistration(Message msg) {
+
     }
 
 /*

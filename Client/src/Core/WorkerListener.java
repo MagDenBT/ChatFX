@@ -15,4 +15,6 @@ public interface WorkerListener {
     void onDisconnection();
 
     void onSigned(Message msg);
+
+    void onRegistration(Message msg);
 }

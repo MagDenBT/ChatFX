@@ -1,19 +1,30 @@
 package controllers;
 
 import Core.DataSaver;
+import UserList.Sex;
 import UserList.User;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;
+import javafx.print.Collation;
 import javafx.scene.Node;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.ListCell;
+import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.FileChooser;
 
+import javax.security.auth.callback.Callback;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
 
 public class SignInController {
 
@@ -30,7 +41,7 @@ public class SignInController {
     @FXML
     private TextField tfAge;
     @FXML
-    private TextField tfSex;
+    private ComboBox<Sex> cbSex;
     @FXML
     private ImageView iSave;
 
@@ -38,9 +49,14 @@ public class SignInController {
 
     @FXML
     public void initialize() {
+       ///// ObservableList<Sex> listSex = FXCollections.observableList(Arrays.asList(Sex.values()));
+        String test;
+        cbSex.getItems().addAll(Sex.values());
+
+        //cbSex.text
         //Adding implementation for SaveButton
         iSave.addEventHandler(MouseEvent.MOUSE_CLICKED, (event) -> {
-            TextField fields[] = {tfLogin, tfPassword, tfFirstName, tfLastName, tfSex};
+            TextField fields[] = {tfLogin, tfPassword, tfFirstName, tfLastName};
             boolean isEmpty = false;
             for (int i = 0; i < fields.length; i++) {
                 if (fields[i].getText().equals("")) {
@@ -48,13 +64,16 @@ public class SignInController {
                     isEmpty = true;
                 }
             }
+            if (cbSex.getValue() == null)
+                isEmpty = true;
             if (!isEmpty) {
                 User user = dataSaver.getUser();
                 user.setLogin(tfLogin.getText());
                 user.setPassword(tfPassword.getText());
                 user.setFirstName(tfFirstName.getText());
                 user.setLastName(tfLastName.getText());
-                user.setSex(tfSex.getText());
+                user.setSex(Sex.MAN);
+                user.setSex(cbSex.getValue());
                 String age = tfAge.getText();
                 user.setAge(age.equals("") ? 0 : Integer.valueOf(age));
                 user.setPhoto(iPhoto.getImage());
@@ -80,7 +99,9 @@ public class SignInController {
         tfPassword.setText(user.getPassword() != null ? user.getPassword() : "");
         tfFirstName.setText(user.getFirstName() != null ? user.getFirstName() : "");
         tfLastName.setText(user.getLastName() != null ? user.getLastName() : "");
-        tfSex.setText(user.getSex() != null ? user.getSex() : "");
+        Sex sex = user.getSex();
+        if (sex != null)
+            cbSex.setValue(user.getSex());
         tfAge.setText(String.valueOf(user.getAge()));
         if (user.getPhoto() != null)
             iPhoto.setImage(user.getPhoto());
@@ -105,4 +126,6 @@ public class SignInController {
         iPhoto.setAccessibleText(null);
     }
 
+    public void setCBSex(ActionEvent event) {
+    }
 }

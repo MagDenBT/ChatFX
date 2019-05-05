@@ -1,4 +1,4 @@
-package sample;
+package Core;
 
 import Connector.TCPConnection;
 
