@@ -13,7 +13,6 @@ public enum Sex {
     }
 
     public static Sex findByKey(int i){
-        String test;
         if(i==0) return WOMAN;
         else return MAN;
     }

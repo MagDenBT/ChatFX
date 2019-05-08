@@ -60,7 +60,7 @@ public class CController implements WorkerListener, DataSaverListner {
     public void initialize() {
         new Thread(() -> worker = new Worker(CController.this, HOST, PORT)).start();
         dataSaver = new DataSaver(this);//Инициализация Сохраняльщика
-        iSettings.addEventHandler(MouseEvent.MOUSE_CLICKED, (event) -> openProfileWindow());
+        iSettings.addEventHandler(MouseEvent.MOUSE_CLICKED, (event) -> signUpWindow());
         new Thread(() -> {
             try {
                 Thread.sleep(300);
@@ -89,7 +89,7 @@ public class CController implements WorkerListener, DataSaverListner {
 
 
     public void clickOnProfilGroup(MouseEvent mouseEvent) {
-        openProfileWindow();
+        signUpWindow();
     }
 /*
 Генераторы окон/////////
@@ -98,17 +98,16 @@ public class CController implements WorkerListener, DataSaverListner {
     /**
      * Открытие окна с с настройками профиля
      */
-    private void openProfileWindow() {
+    private void signUpWindow() {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("../fxml/signIn.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../fxml/signUp.fxml"));
             loader.load();
             Stage stage = new Stage();
             stage.setScene(new Scene(loader.getRoot()));
             stage.initOwner(taLog.getScene().getWindow());
             stage.initModality(Modality.WINDOW_MODAL);
-            SignInController signInController = loader.getController();
-            signInController.setDataSaver(dataSaver);
-            signInController.populateFields();
+            SignUpController signUpController = loader.getController();
+            signUpController.setDataSaver(dataSaver);
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();

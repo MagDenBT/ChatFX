@@ -26,7 +26,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 
-public class SignInController {
+public class SignUpController {
 
     @FXML
     private ImageView iPhoto;
@@ -49,11 +49,7 @@ public class SignInController {
 
     @FXML
     public void initialize() {
-       ///// ObservableList<Sex> listSex = FXCollections.observableList(Arrays.asList(Sex.values()));
-        String test;
         cbSex.getItems().addAll(Sex.values());
-
-        //cbSex.text
         //Adding implementation for SaveButton
         iSave.addEventHandler(MouseEvent.MOUSE_CLICKED, (event) -> {
             TextField fields[] = {tfLogin, tfPassword, tfFirstName, tfLastName};
@@ -93,19 +89,19 @@ public class SignInController {
         this.dataSaver = dataSaver;
     }
 
-    void populateFields() {
-        User user = dataSaver.getUser();
-        tfLogin.setText(user.getLogin() != null ? user.getLogin() : "");
-        tfPassword.setText(user.getPassword() != null ? user.getPassword() : "");
-        tfFirstName.setText(user.getFirstName() != null ? user.getFirstName() : "");
-        tfLastName.setText(user.getLastName() != null ? user.getLastName() : "");
-        Sex sex = user.getSex();
-        if (sex != null)
-            cbSex.setValue(user.getSex());
-        tfAge.setText(String.valueOf(user.getAge()));
-        if (user.getPhoto() != null)
-            iPhoto.setImage(user.getPhoto());
-    }
+//    void populateFields() {
+//        User user = dataSaver.getUser();
+//        tfLogin.setText(user.getLogin() != null ? user.getLogin() : "");
+//        tfPassword.setText(user.getPassword() != null ? user.getPassword() : "");
+//        tfFirstName.setText(user.getFirstName() != null ? user.getFirstName() : "");
+//        tfLastName.setText(user.getLastName() != null ? user.getLastName() : "");
+//        Sex sex = user.getSex();
+//        if (sex != null)
+//            cbSex.setValue(user.getSex());
+//        tfAge.setText(String.valueOf(user.getAge()));
+//        if (user.getPhoto() != null)
+//            iPhoto.setImage(user.getPhoto());
+//    }
 
     private void selectImage(Event event) {
         FileChooser fileChooser = new FileChooser();
