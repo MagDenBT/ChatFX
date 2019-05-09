@@ -135,6 +135,7 @@ public class ServerWorker implements TCPConnectionListener {
     }
 
     private void authAnswer(TCPConnection tcpConnection, boolean authenticated) {
+       //Нужно допилить полное формирование юзера для его отправки клиенту
         User user = new User(tcpConnection.getLogin());
         Message msg = new Message(user, MsgType.authentication);
         String textAnswer;
