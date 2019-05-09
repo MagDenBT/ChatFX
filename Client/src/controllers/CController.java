@@ -59,11 +59,12 @@ public class CController implements WorkerListener, DataSaverListner {
 
     @FXML
     public void initialize() {
-        Thread workerThread = new Thread(() -> {
+        new Thread(() -> {
             worker = Worker.getInstance();
             worker.addListener(this);
             worker.setWorker(HOST, PORT);
-        });
+        }).start();
+
         dataSaver = DataSaver.getInstance();
         dataSaver.addListener(this);//Инициализация Сохраняльщика
         iSettings.addEventHandler(MouseEvent.MOUSE_CLICKED, (event) -> signUpWindow());

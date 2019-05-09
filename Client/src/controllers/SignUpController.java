@@ -65,8 +65,10 @@ public class SignUpController implements WorkerListener, DataSaverListner {
 
 
     @FXML
-
     public void initialize() {
+        worker = Worker.getInstance();
+        worker.addListener(this);
+
         cbSex.getItems().addAll(Sex.values());
         iPhoto.addEventHandler(MouseEvent.MOUSE_CLICKED, (event) -> selectImage(event));
     }
@@ -116,9 +118,6 @@ public class SignUpController implements WorkerListener, DataSaverListner {
             User user = createUser();
             dataSaver = DataSaver.getInstance();
             dataSaver.addListener(this);
-            worker = Worker.getInstance();
-            worker.addListener(this);
-
             worker.sendAuthentication(user);
             try {
                 dataSaver.saveProfile(user);
@@ -216,7 +215,6 @@ public class SignUpController implements WorkerListener, DataSaverListner {
             textStatus += "\n Сообщение сервера: " + msg.getTextMsg();
             color = Color.RED;
         }
-
        setlRegisterStatus(textStatus, color);
     }
 

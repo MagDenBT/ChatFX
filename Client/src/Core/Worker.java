@@ -16,6 +16,7 @@ import java.util.ArrayList;
 public class Worker implements TCPConnectionListener {
 
     private TCPConnection tcpConnection;
+    private boolean isAuthenticated;
     private ArrayList<WorkerListener> workerListeners;
     private String host;
     private int port;
@@ -37,6 +38,7 @@ public class Worker implements TCPConnectionListener {
 
     private Worker() {
         workerListeners = new ArrayList();
+        isAuthenticated = false;
     }
 
     public void addListener(WorkerListener listener) {
@@ -129,7 +131,6 @@ public class Worker implements TCPConnectionListener {
     @Override
     public void onRecieveMessage(TCPConnection tcpConnection, Message msg) {
         switch (msg.getType()) {
-            case authentication:
             case textMsg:
                 onRecieveMessageToAll(msg.getUser().getLogin() + ": " + msg.getTextMsg());
                 break;
@@ -159,6 +160,7 @@ public class Worker implements TCPConnectionListener {
                 ) {
             workerListener.onSigned(msg);
         }
+        setAuthenticated(msg.authenticated());
         return msg.authenticated();
     }
 
@@ -168,6 +170,7 @@ public class Worker implements TCPConnectionListener {
                 ) {
             workerListener.onRegistration(msg);
         }
+        setAuthenticated(msg.authenticated());
         return msg.authenticated();
     }
 
@@ -182,6 +185,7 @@ public class Worker implements TCPConnectionListener {
                 ) {
             workerListener.connectionException(e);
         }
+        setAuthenticated(false);
     }
 
     /**
@@ -195,6 +199,7 @@ public class Worker implements TCPConnectionListener {
                 ) {
             workerListener.connectionException(e);
         }
+        setAuthenticated(false);
     }
 
     /**
@@ -208,5 +213,13 @@ public class Worker implements TCPConnectionListener {
                 ) {
             workerListener.recieveMessageException(e);
         }
+    }
+
+    public synchronized boolean isAuthenticated() {
+        return isAuthenticated;
+    }
+
+    public synchronized void setAuthenticated(boolean authenticated) {
+        isAuthenticated = authenticated;
     }
 }

@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.SignUpController">
+   <children>
+      <VBox layoutX="108.0" layoutY="32.0" prefHeight="276.0" prefWidth="162.0">
+         <children>
+            <TextField fx:id="tfLogin" layoutX="108.0" layoutY="32.0">
+               <VBox.margin>
+                  <Insets bottom="40.0" />
+               </VBox.margin>
+            </TextField>
+            <TextField fx:id="tfPassword" layoutX="108.0" layoutY="74.0">
+               <VBox.margin>
+                  <Insets bottom="40.0" />
+               </VBox.margin>
+            </TextField>
+            <TextField fx:id="tfFirstName" layoutX="108.0" layoutY="114.0">
+               <VBox.margin>
+                  <Insets bottom="40.0" />
+               </VBox.margin>
+            </TextField>
+            <TextField fx:id="tfLastName" layoutX="108.0" layoutY="171.0">
+               <VBox.margin>
+                  <Insets bottom="40.0" />
+               </VBox.margin>
+            </TextField>
+         </children>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </VBox>
+      <VBox layoutX="405.0" layoutY="32.0">
+         <children>
+            <TextField fx:id="tfAge" layoutX="348.0" layoutY="32.0">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <VBox.margin>
+                  <Insets bottom="40.0" />
+               </VBox.margin>
+            </TextField>
+         </children>
+      </VBox>
+      <VBox layoutX="14.0" layoutY="32.0">
+         <children>
+            <Label layoutX="14.0" layoutY="32.0" prefHeight="29.0" prefWidth="91.0" text="Логин">
+               <VBox.margin>
+                  <Insets bottom="40.0" />
+               </VBox.margin>
+            </Label>
+            <Label layoutX="14.0" layoutY="108.0" prefHeight="29.0" prefWidth="91.0" text="Пароль">
+               <VBox.margin>
+                  <Insets bottom="40.0" />
+               </VBox.margin>
+            </Label>
+            <Label layoutX="14.0" layoutY="170.0" prefHeight="29.0" prefWidth="91.0" text="Имя">
+               <VBox.margin>
+                  <Insets bottom="40.0" />
+               </VBox.margin>
+            </Label>
+            <Label layoutX="24.0" layoutY="245.0" prefHeight="29.0" prefWidth="91.0" text="Фамилия">
+               <VBox.margin>
+                  <Insets bottom="40.0" />
+               </VBox.margin>
+            </Label>
+         </children>
+      </VBox>
+      <VBox layoutX="289.0" layoutY="32.0">
+         <children>
+            <Label layoutX="300.0" layoutY="32.0" prefHeight="29.0" prefWidth="91.0" text="Возраст">
+               <VBox.margin>
+                  <Insets bottom="40.0" />
+               </VBox.margin>
+            </Label>
+         </children>
+      </VBox>
+      <ImageView fx:id="iSave" fitHeight="36.0" fitWidth="33.0" layoutX="335.0" layoutY="353.0" onMouseClicked="#toRegisterOnServer" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Assets/save.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="iPhoto" fitHeight="138.0" fitWidth="181.0" layoutX="370.0" layoutY="148.0" pickOnBounds="true" preserveRatio="true" smooth="false">
+         <image>
+            <Image url="@../Assets/emptyPhoto.png" />
+         </image>
+      </ImageView>
+      <Button layoutX="390.0" layoutY="294.0" mnemonicParsing="false" onAction="#deletePhoto" text="Удалить фото" />
+      <ComboBox fx:id="cbSex" editable="true" layoutX="405.0" layoutY="92.0" onAction="#setCBSex" prefHeight="39.0" prefWidth="213.0" promptText="Выберите пол" />
+      <ImageView fx:id="iCancel" fitHeight="49.0" fitWidth="41.0" layoutX="398.0" layoutY="349.0" onMouseClicked="#closeWindow" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Assets/error.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="lRegisterStatus" layoutX="14.0" layoutY="333.0" onMouseReleased="#lRegStatusAction" prefHeight="61.0" prefWidth="296.0" />
+   </children>
+</AnchorPane>
