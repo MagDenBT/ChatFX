@@ -42,6 +42,9 @@ class StreamReader {
                             case authentication:
                                 tcpConnection.authenticated =listener.onAuthentication(tcpConnection, msg);
                                 break;
+                            case registration:
+                                tcpConnection.authenticated =listener.onRegistration(tcpConnection, msg);
+                                break;
                             case userUpdate:
                                 ///
                                 break;

@@ -7,22 +7,43 @@ import javafx.scene.image.Image;
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.*;
+import java.util.ArrayList;
 
 /*
 Объект, который отвечает за backup/restore данных
  */
 public class DataSaver {
 
-    private final DataSaverListner listner;
+    private ArrayList<DataSaverListner> listners;
     private final String dataPath = "Media";
     private final String profilePath = "Profil";
     private final String profileFileName = "pr";
     private final String avatarName = "avatar.";
     private User user;
+    private static volatile DataSaver instance;
 
-    public DataSaver(DataSaverListner listner) {
-        this.listner = listner;
-        user = new User();
+    public static DataSaver getInstance(){
+        DataSaver localInstance = instance;
+        if(localInstance==null){
+            synchronized (DataSaver.class) {
+                localInstance = instance;
+                if(localInstance == null)
+                    instance = localInstance = new DataSaver();
+            }
+        }
+        return localInstance;
+    }
+
+    private DataSaver() {
+        listners = new ArrayList<>();
+    }
+
+    public void addListener(DataSaverListner listner) {
+        listners.add(listner);
+    }
+
+    public void removeListener(DataSaverListner listner) {
+        listners.remove(listner);
     }
 
     public synchronized void restoreProfile() throws IOException, ClassNotFoundException {
@@ -45,14 +66,18 @@ public class DataSaver {
             image = new Image("Assets/emptyPhoto.png");
 
         user.setPhoto(image);
-        listner.ProfilUpdated();
+        for (DataSaverListner listner:listners
+             ) {
+            listner.ProfilUpdated();
+        }
+
     }
 
     public User getUser() {
         return user;
     }
 
-    public synchronized void saveProfile() throws IOException {
+    public synchronized void saveProfile(User user) throws IOException {
         File path = new File(dataPath + "//" + profilePath);
         if (!path.exists()) path.mkdirs();
         String extention = user.getPhotoExtention();
@@ -74,10 +99,17 @@ public class DataSaver {
                 objectOutputStream.writeObject(user);
                 objectOutputStream.flush();
                 objectOutputStream.close();
-                listner.ProfilUpdated();
+                this.user = user;
+                for (DataSaverListner listner:listners
+                        ) {
+                    listner.ProfilUpdated();
+                }
             } else System.out.println("Не могу записать файл с профилем");
         } catch (IOException e) {
-            listner.onException(e.getMessage());
+            for (DataSaverListner listner:listners
+                    ) {
+                listner.onException(e.getMessage());
+            }
         }
     }
 

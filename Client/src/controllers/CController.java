@@ -13,6 +13,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.input.KeyCode;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.stage.Modality;
@@ -58,8 +59,13 @@ public class CController implements WorkerListener, DataSaverListner {
 
     @FXML
     public void initialize() {
-        new Thread(() -> worker = new Worker(CController.this, HOST, PORT)).start();
-        dataSaver = new DataSaver(this);//Инициализация Сохраняльщика
+        Thread workerThread = new Thread(() -> {
+            worker = Worker.getInstance();
+            worker.addListener(this);
+            worker.setWorker(HOST, PORT);
+        });
+        dataSaver = DataSaver.getInstance();
+        dataSaver.addListener(this);//Инициализация Сохраняльщика
         iSettings.addEventHandler(MouseEvent.MOUSE_CLICKED, (event) -> signUpWindow());
         new Thread(() -> {
             try {
@@ -103,11 +109,14 @@ public class CController implements WorkerListener, DataSaverListner {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("../fxml/signUp.fxml"));
             loader.load();
             Stage stage = new Stage();
-            stage.setScene(new Scene(loader.getRoot()));
+            Scene scene = new Scene(loader.getRoot());
+            scene.getRoot().setOnKeyReleased(event -> {
+                if (event.getCode() == KeyCode.ESCAPE)
+                    stage.close();
+            });
+            stage.setScene(scene);
             stage.initOwner(taLog.getScene().getWindow());
             stage.initModality(Modality.WINDOW_MODAL);
-            SignUpController signUpController = loader.getController();
-            signUpController.setDataSaver(dataSaver);
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();

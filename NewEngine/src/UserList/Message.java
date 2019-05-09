@@ -56,6 +56,6 @@ public class Message implements Serializable {
     }
 
     public void setTextMsg(String textMsg) {
-        textMsg = textMsg;
+        this.textMsg = textMsg;
     }
 }

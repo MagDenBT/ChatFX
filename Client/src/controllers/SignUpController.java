@@ -1,8 +1,13 @@
 package controllers;
 
 import Core.DataSaver;
+import Core.DataSaverListner;
+import Core.Worker;
+import Core.WorkerListener;
+import UserList.Message;
 import UserList.Sex;
 import UserList.User;
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -10,24 +15,30 @@ import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.print.Collation;
 import javafx.scene.Node;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.ListCell;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TextField;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.paint.Color;
+import javafx.scene.paint.Paint;
+import javafx.scene.text.Font;
 import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 
 import javax.security.auth.callback.Callback;
+import javax.xml.crypto.Data;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 
-public class SignUpController {
+public class SignUpController implements WorkerListener, DataSaverListner {
 
+    @FXML
+    private ImageView iCancel;
     @FXML
     private ImageView iPhoto;
     @FXML
@@ -44,50 +55,22 @@ public class SignUpController {
     private ComboBox<Sex> cbSex;
     @FXML
     private ImageView iSave;
+    @FXML
+    private Label lRegisterStatus;
 
     private DataSaver dataSaver;
+    private Worker worker;
+
+
+
 
     @FXML
+
     public void initialize() {
         cbSex.getItems().addAll(Sex.values());
-        //Adding implementation for SaveButton
-        iSave.addEventHandler(MouseEvent.MOUSE_CLICKED, (event) -> {
-            TextField fields[] = {tfLogin, tfPassword, tfFirstName, tfLastName};
-            boolean isEmpty = false;
-            for (int i = 0; i < fields.length; i++) {
-                if (fields[i].getText().equals("")) {
-                    fields[i].setPromptText("НЕ ЗАПОЛЕНО");
-                    isEmpty = true;
-                }
-            }
-            if (cbSex.getValue() == null)
-                isEmpty = true;
-            if (!isEmpty) {
-                User user = dataSaver.getUser();
-                user.setLogin(tfLogin.getText());
-                user.setPassword(tfPassword.getText());
-                user.setFirstName(tfFirstName.getText());
-                user.setLastName(tfLastName.getText());
-                user.setSex(Sex.MAN);
-                user.setSex(cbSex.getValue());
-                String age = tfAge.getText();
-                user.setAge(age.equals("") ? 0 : Integer.valueOf(age));
-                user.setPhoto(iPhoto.getImage());
-                user.setPhotoExtention(iPhoto.getAccessibleText());
-                try {
-                    dataSaver.saveProfile();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-        });
-        //Adding implementation for PhotoChooser
         iPhoto.addEventHandler(MouseEvent.MOUSE_CLICKED, (event) -> selectImage(event));
     }
 
-    void setDataSaver(DataSaver dataSaver) {
-        this.dataSaver = dataSaver;
-    }
 
 //    void populateFields() {
 //        User user = dataSaver.getUser();
@@ -117,11 +100,135 @@ public class SignUpController {
         }
     }
 
-    public void deletePhoto(ActionEvent event) {
+    @FXML
+    private void deletePhoto(ActionEvent event) {
         iPhoto.setImage(new Image("Assets/emptyPhoto.png"));
         iPhoto.setAccessibleText(null);
     }
 
-    public void setCBSex(ActionEvent event) {
+    @FXML
+    private void setCBSex(ActionEvent event) {
     }
+
+    @FXML
+    private void toRegisterOnServer(MouseEvent event) {
+        if (checkPopulateUserFields()) {
+            User user = createUser();
+            dataSaver = DataSaver.getInstance();
+            dataSaver.addListener(this);
+            worker = Worker.getInstance();
+            worker.addListener(this);
+
+            worker.sendAuthentication(user);
+            try {
+                dataSaver.saveProfile(user);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+    }
+
+    public void closeWindow(MouseEvent event) {
+        Node sourse = (Node) (event.getSource());
+        ((Stage) sourse.getScene().getWindow()).close();
+    }
+
+    private boolean checkPopulateUserFields() {
+        TextField fields[] = {tfLogin, tfPassword, tfFirstName, tfLastName};
+        boolean isEmpty = false;
+        for (int i = 0; i < fields.length; i++) {
+            if (fields[i].getText().equals("")) {
+                fields[i].setPromptText("НЕ ЗАПОЛЕНО");
+                isEmpty = true;
+            }
+        }
+        if (cbSex.getValue() == null)
+            isEmpty = true;
+        return isEmpty;
+    }
+
+    private User createUser() {
+        User user = new User();
+        user.setLogin(tfLogin.getText());
+        user.setPassword(tfPassword.getText());
+        user.setFirstName(tfFirstName.getText());
+        user.setLastName(tfLastName.getText());
+        user.setSex(Sex.MAN);
+        user.setSex(cbSex.getValue());
+        String age = tfAge.getText();
+        user.setAge(age.equals("") ? 0 : Integer.valueOf(age));
+        user.setPhoto(iPhoto.getImage());
+        user.setPhotoExtention(iPhoto.getAccessibleText());
+        return user;
+    }
+
+    @Override
+    public void onException(String message) {
+
+    }
+
+    @Override
+    public void ProfilUpdated() {
+
+    }
+
+    @Override
+    public void gotTextMsg(String msg) {
+
+    }
+
+    @Override
+    public void connectionException(Exception e) {
+
+    }
+
+    @Override
+    public void recieveMessageException(Exception e) {
+
+    }
+
+    @Override
+    public void onConnection() {
+
+    }
+
+    @Override
+    public void onDisconnection() {
+
+    }
+
+    @Override
+    public void onSigned(Message msg) {
+
+    }
+
+    @Override
+    public void onRegistration(Message msg) {
+        String textStatus;
+        Color color;
+        if (msg.authenticated()){
+            textStatus = "Регистрация прошла успешно";
+            textStatus += "\n Сообщение сервера: " + msg.getTextMsg();
+            color = Color.GREEN;
+        }else{
+            textStatus = "Не удалось зарегистрироваться";
+            textStatus += "\n Сообщение сервера: " + msg.getTextMsg();
+            color = Color.RED;
+        }
+
+       setlRegisterStatus(textStatus, color);
+    }
+
+    private void setlRegisterStatus(String text, Color color) {
+        Platform.runLater(()->{
+            lRegisterStatus.setText(text);
+            lRegisterStatus.setTextFill(color);
+        });
+    }
+    @FXML
+    private void lRegStatusAction(MouseEvent event) {
+    }
+
+
 }
