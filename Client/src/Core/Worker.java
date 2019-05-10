@@ -70,7 +70,8 @@ public class Worker implements TCPConnectionListener {
 
 
     public synchronized void restartConnection() {
-        tcpConnection.closeConnection();
+        if(tcpConnection!=null)
+            tcpConnection.closeConnection();
         startConnection();
     }
 /*
@@ -164,6 +165,7 @@ public class Worker implements TCPConnectionListener {
         return msg.authenticated();
     }
 
+
     @Override
     public boolean onRegistration(TCPConnection tcpConnection, Message msg) {
         for (WorkerListener workerListener : workerListeners
@@ -221,5 +223,11 @@ public class Worker implements TCPConnectionListener {
 
     public synchronized void setAuthenticated(boolean authenticated) {
         isAuthenticated = authenticated;
+    }
+
+    public synchronized boolean connectionIsLive(){
+        if (tcpConnection != null)
+            return true;
+        return false;
     }
 }

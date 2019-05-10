@@ -116,13 +116,17 @@ public class SignUpController implements WorkerListener, DataSaverListner {
     private void toRegisterOnServer(MouseEvent event) {
         if (checkPopulateUserFields()) {
             User user = createUser();
-            dataSaver = DataSaver.getInstance();
-            dataSaver.addListener(this);
-            worker.sendAuthentication(user);
-            try {
-                dataSaver.saveProfile(user);
-            } catch (IOException e) {
-                e.printStackTrace();
+            if(worker.connectionIsLive()) {
+                dataSaver = DataSaver.getInstance();
+                dataSaver.addListener(this);
+                worker.sendAuthentication(user);
+                try {
+                    dataSaver.saveProfile(user);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }else{
+                ///дописать что делать если нет подключения
             }
         }
 
