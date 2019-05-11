@@ -111,6 +111,6 @@ public class TCPConnection {
 
     @Override
     public String toString() {
-        return "IP" + socket.getInetAddress() + ":" + socket.getPort();
+        return "IP" + socket!=null? socket.getInetAddress() + ":" + socket.getPort():"...";
     }
 }

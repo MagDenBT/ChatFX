@@ -8,35 +8,24 @@ import UserList.Message;
 import UserList.Sex;
 import UserList.User;
 import javafx.application.Platform;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;
-import javafx.print.Collation;
 import javafx.scene.Node;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.KeyCode;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
-import javafx.scene.paint.Paint;
-import javafx.scene.text.Font;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
-import javax.security.auth.callback.Callback;
-import javax.xml.crypto.Data;
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
 
 public class SignUpController implements WorkerListener, DataSaverListner {
-
+    @FXML
+    private Button bSave;
     @FXML
     private ImageView iCancel;
     @FXML
@@ -68,7 +57,10 @@ public class SignUpController implements WorkerListener, DataSaverListner {
     public void initialize() {
         worker = Worker.getInstance();
         worker.addListener(this);
-
+        if (worker.isAuthenticated()){
+          tfLogin.setEditable(false);
+          tfPassword.setEditable(false);
+        }
         cbSex.getItems().addAll(Sex.values());
         iPhoto.addEventHandler(MouseEvent.MOUSE_CLICKED, (event) -> selectImage(event));
     }
@@ -113,7 +105,7 @@ public class SignUpController implements WorkerListener, DataSaverListner {
     }
 
     @FXML
-    private void toRegisterOnServer(MouseEvent event) {
+    private void toRegisterOnServer(ActionEvent event) {
         if (checkPopulateUserFields()) {
             User user = createUser();
             if(worker.connectionIsLive()) {
@@ -127,6 +119,8 @@ public class SignUpController implements WorkerListener, DataSaverListner {
                 }
             }else{
                 ///дописать что делать если нет подключения
+                bSave.setDisable(true);
+                bSave.setAccessibleHelp("Нет подключения к серверу");
             }
         }
 
